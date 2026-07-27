@@ -1,0 +1,2355 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- ═══════════ SEO ═══════════ -->
+  <title>Lisan — учите арабский язык на русском | Приложение и книга</title>
+  <meta name="description" content="Изучайте арабский на русском: 17 структурированных уроков, аудио от носителей и практика произношения. Приложение и учебник Lisan — скоро запуск.">
+  <meta name="keywords" content="арабский язык, изучение арабского, арабский для начинающих, арабский на русском, учебник арабского языка">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="Lisan">
+  <meta name="theme-color" content="#DD6031">
+  <link rel="canonical" href="https://lisan.app/">
+
+  <!-- robots.txt -->
+  <link rel="robots" href="/robots.txt">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Lisan">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="https://lisan.app/">
+  <meta property="og:title" content="Lisan — учите арабский язык на понятном вам языке">
+  <meta property="og:description" content="Современная система изучения арабского языка, созданная специально для русскоговорящих. 17 уроков от алфавита до уверенного общения.">
+  <meta property="og:image" content="https://lisan.app/img/og-cover.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lisan — учите арабский язык на понятном вам языке">
+  <meta name="twitter:description" content="Система изучения арабского языка для русскоговорящих: приложение и учебник из 17 уроков.">
+  <meta name="twitter:image" content="https://lisan.app/img/og-cover.jpg">
+
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="img/phone.png" fetchpriority="high">
+  <script>document.documentElement.className = 'js';</script>
+
+  <style>
+    /* ============ TOKENS & THEME ============ */
+    :root {
+      --orange: #DD6031;
+      --orange-dark: #C24E22;
+      --orange-deep: #C05321;
+      --orange-tint: #FCEFE6;
+      --orange-glow: rgba(221, 96, 49, 0.15);
+      --ink: #241613;
+      --ink-2: #4A3730;
+      --muted: #7C6660;
+      --dark: #2A1912;
+      --cream: #FEF6EE;
+      --cream-2: #F9EFE7;
+      --card: #FAF1EA;
+      --line: #EDDDD1;
+      --white: #FFFFFF;
+      --r-lg: 22px;
+      --r-xl: 30px;
+      --shadow-sm: 0 2px 10px rgba(70, 35, 20, .05);
+      --shadow-md: 0 14px 40px rgba(70, 35, 20, .09);
+      --shadow-lg: 0 24px 60px rgba(70, 35, 20, .14);
+      --wrap: 1160px;
+      --transition: .35s cubic-bezier(.2, .7, .3, 1);
+    }
+
+    [data-theme="dark"] {
+      --orange: #E87342;
+      --orange-dark: #D4602E;
+      --orange-deep: #D4693A;
+      --orange-tint: #3D2218;
+      --orange-glow: rgba(221, 96, 49, .25);
+      --ink: #F5E6DC;
+      --ink-2: #C9B5A8;
+      --muted: #9E8B80;
+      --dark: #1A0F0A;
+      --cream: #1C1210;
+      --cream-2: #231815;
+      --card: #2A1C17;
+      --line: #3D2A22;
+      --white: #2A1C17;
+      --shadow-sm: 0 2px 10px rgba(0, 0, 0, .3);
+      --shadow-md: 0 14px 40px rgba(0, 0, 0, .4);
+      --shadow-lg: 0 24px 60px rgba(0, 0, 0, .5);
+    }
+
+    /* ============ RESET ============ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background var(--transition), color var(--transition);
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      height: auto;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    button,
+    input {
+      font: inherit;
+    }
+    :focus-visible {
+      outline: 3px solid var(--orange);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .ar {
+      font-family: 'Amiri', serif;
+      direction: rtl;
+    }
+    .wrap {
+      max-width: var(--wrap);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ============ SCROLL PROGRESS ============ */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: var(--orange);
+      z-index: 9999;
+      transition: width .1s linear;
+      box-shadow: 0 0 10px var(--orange-glow);
+      width: 0%;
+    }
+
+    /* ============ SKELETON ============ */
+    img[data-sk] {
+      background-image: linear-gradient(100deg, #F1E3D6 25%, #FBF4EC 45%, #F1E3D6 65%);
+      background-size: 280% 100%;
+      background-repeat: no-repeat;
+      animation: skShine 1.5s linear infinite;
+    }
+    img[data-sk].is-loaded {
+      background-image: none;
+      animation: none;
+    }
+    [data-theme="dark"] img[data-sk] {
+      background-image: linear-gradient(100deg, #2A1C17 25%, #3D2A22 45%, #2A1C17 65%);
+    }
+    @keyframes skShine {
+      from {
+        background-position: 190% 0;
+      }
+      to {
+        background-position: -90% 0;
+      }
+    }
+
+    /* ============ TYPO ============ */
+    h1,
+    h2,
+    h3,
+    h4 {
+      line-height: 1.18;
+      letter-spacing: -.02em;
+      font-weight: 800;
+    }
+    h2 {
+      font-size: clamp(24px, 3.2vw, 36px);
+    }
+    h3 {
+      font-size: clamp(18px, 2vw, 22px);
+    }
+    h4 {
+      font-size: clamp(14px, 1.2vw, 16px);
+    }
+    .sec-title {
+      font-size: clamp(24px, 3.2vw, 36px);
+      text-align: center;
+    }
+    .sec-sub {
+      text-align: center;
+      color: var(--muted);
+      max-width: 640px;
+      margin: 12px auto 0;
+      font-size: 15.5px;
+    }
+    .sec {
+      padding: 76px 0;
+    }
+    .sec-head {
+      margin-bottom: 44px;
+    }
+    .sec-illo {
+      height: 56px;
+      width: auto;
+      margin: 0 auto 14px;
+      display: block;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    /* ============ ANIMATIONS ============ */
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+    @keyframes pulse-glow {
+      0%,
+      100% {
+        box-shadow: 0 0 20px var(--orange-glow);
+      }
+      50% {
+        box-shadow: 0 0 40px var(--orange-glow), 0 0 60px rgba(221, 96, 49, .1);
+      }
+    }
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @keyframes shake {
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(-6px);
+      }
+      75% {
+        transform: translateX(6px);
+      }
+    }
+
+    /* ============ BUTTONS ============ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      border: 0;
+      cursor: pointer;
+      padding: 15px 28px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: transform .25s cubic-bezier(.34, 1.56, .64, 1), box-shadow .25s ease, background .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255, 255, 255, .15), transparent);
+      transform: translateX(-100%);
+      transition: transform .6s;
+    }
+    .btn:hover::after {
+      transform: translateX(100%);
+    }
+    .btn-primary {
+      background: var(--orange);
+      color: #fff;
+      box-shadow: 0 10px 24px rgba(221, 96, 49, .28);
+    }
+    .btn-primary:hover {
+      background: var(--orange-dark);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(221, 96, 49, .4);
+    }
+    .btn-primary:active {
+      transform: scale(0.96);
+    }
+    .btn-dark {
+      background: var(--dark);
+      color: #fff;
+    }
+    .btn-dark:hover {
+      background: #3d2619;
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, .2);
+    }
+    .btn .arw {
+      transition: transform .3s cubic-bezier(.34, 1.56, .64, 1);
+    }
+    .btn:hover .arw {
+      transform: translateX(6px);
+    }
+
+    /* ============ THEME TOGGLE ============ */
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1.5px solid var(--line);
+      background: transparent;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: all .3s ease;
+      color: var(--ink);
+    }
+    .theme-toggle:hover {
+      border-color: var(--orange);
+      transform: rotate(15deg);
+      background: var(--orange-tint);
+    }
+    .theme-toggle svg {
+      width: 20px;
+      height: 20px;
+      transition: transform .3s;
+    }
+
+    /* ============ HEADER ============ */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(254, 246, 238, .88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: all .25s;
+    }
+    [data-theme="dark"] .header {
+      background: rgba(28, 18, 16, .88);
+    }
+    .header.stuck {
+      border-color: var(--line);
+      box-shadow: 0 4px 20px rgba(70, 35, 20, .05);
+    }
+    .header-in {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+      transition: transform .3s;
+    }
+    .brand:hover {
+      transform: scale(1.02);
+    }
+    .brand-mark {
+      width: 31px;
+      height: 34px;
+      flex: none;
+      color: var(--orange);
+      transition: transform .5s cubic-bezier(.34, 1.56, .64, 1);
+    }
+    .brand:hover .brand-mark {
+      transform: rotate(-10deg) scale(1.1);
+    }
+    .brand-txt .name {
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: .14em;
+      line-height: 1;
+      display: block;
+      background: linear-gradient(135deg, var(--orange), var(--orange-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .brand-txt .tag {
+      font-size: 10.5px;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 3px;
+      display: block;
+      -webkit-text-fill-color: var(--muted);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+    }
+    .nav a {
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--ink-2);
+      position: relative;
+      padding: 4px 0;
+      transition: color .25s;
+    }
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2.5px;
+      background: var(--orange);
+      transition: width .35s cubic-bezier(.34, 1.56, .64, 1);
+    }
+    .nav a:hover {
+      color: var(--orange);
+    }
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ============ BURGER ============ */
+    .burger {
+      display: none;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--white);
+      padding: 0;
+      place-items: center;
+      flex: none;
+      transition: all .25s;
+    }
+    .burger:hover {
+      border-color: var(--orange);
+    }
+    .burger i {
+      display: block;
+      width: 19px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: all .3s cubic-bezier(.34, 1.56, .64, 1);
+    }
+    .burger i+i {
+      margin-top: 4.5px;
+    }
+    .burger[aria-expanded="true"] i:nth-child(1) {
+      transform: translateY(6.5px) rotate(45deg);
+    }
+    .burger[aria-expanded="true"] i:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .burger[aria-expanded="true"] i:nth-child(3) {
+      transform: translateY(-6.5px) rotate(-45deg);
+    }
+
+    /* ============ MOBILE DROPDOWN ============ */
+    .mnav {
+      display: none;
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      top: calc(100% + 8px);
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 22px 50px rgba(70, 35, 20, .16);
+      overflow: hidden;
+      padding: 6px 18px 16px;
+    }
+    [data-theme="dark"] .mnav {
+      background: var(--card);
+      border-color: var(--line);
+      box-shadow: 0 22px 50px rgba(0, 0, 0, .4);
+    }
+    .mnav.open {
+      display: block;
+      animation: slideDown .3s ease;
+    }
+    .mnav a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 4px;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink-2);
+      border-bottom: 1px solid var(--line);
+      transition: color .2s, padding .2s;
+    }
+    .mnav a:hover {
+      color: var(--orange);
+      padding-left: 8px;
+    }
+    .mnav a svg {
+      color: var(--orange);
+      flex: none;
+      opacity: .7;
+    }
+    .mnav .m-cta {
+      display: flex;
+      justify-content: center;
+      margin-top: 14px;
+      border-bottom: 0;
+      padding: 0;
+    }
+    .mnav .m-cta .btn {
+      width: 100%;
+      justify-content: center;
+    }
+    .scroll-lock {
+      overflow: hidden;
+    }
+
+    /* ============ HERO ============ */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 56px 0 84px;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%);
+    }
+    .hero-deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      font-family: 'Amiri', serif;
+      color: var(--line);
+      opacity: .5;
+      user-select: none;
+    }
+    .hero-deco span {
+      position: absolute;
+      line-height: 1;
+      animation: float 6s ease-in-out infinite;
+    }
+    .hero-deco span:nth-child(1) {
+      top: 6%;
+      right: 6%;
+      font-size: 120px;
+      animation-delay: 0s;
+    }
+    .hero-deco span:nth-child(2) {
+      top: 34%;
+      right: 24%;
+      font-size: 86px;
+      animation-delay: 1s;
+    }
+    .hero-deco span:nth-child(3) {
+      bottom: 12%;
+      right: 3%;
+      font-size: 104px;
+      animation-delay: 2s;
+    }
+    .hero-deco span:nth-child(4) {
+      top: 60%;
+      left: 2%;
+      font-size: 78px;
+      animation-delay: 3s;
+    }
+    .hero-deco span:nth-child(5) {
+      top: 12%;
+      left: 32%;
+      font-size: 64px;
+      animation-delay: 4s;
+    }
+    .hero-in {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: center;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: clamp(32px, 4vw, 47px);
+    }
+    .hero h1 .or {
+      color: var(--orange);
+      display: block;
+      position: relative;
+    }
+    @keyframes scaleIn {
+      to {
+        transform: scaleX(1);
+      }
+    }
+    .hero-lead {
+      margin-top: 22px;
+      font-size: 16.5px;
+      color: var(--ink-2);
+      max-width: 440px;
+    }
+    .hero-feats {
+      display: flex;
+      gap: 34px;
+      margin: 34px 0;
+      flex-wrap: wrap;
+    }
+    .hf {
+      max-width: 150px;
+      transition: transform .3s cubic-bezier(.34, 1.56, .64, 1);
+    }
+    .hf:hover {
+      transform: translateY(-4px);
+    }
+    .hf svg {
+      margin-bottom: 10px;
+      transition: transform .3s;
+    }
+    .hf:hover svg {
+      transform: scale(1.1) rotate(-5deg);
+    }
+    .hf p {
+      font-size: 12.8px;
+      font-weight: 600;
+      color: var(--ink-2);
+      line-height: 1.45;
+    }
+    .hero-note {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 14px;
+    }
+
+    /* --- hero visual --- */
+    .visual {
+      position: relative;
+      height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .stage {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 106%;
+      height: 118px;
+      background: linear-gradient(180deg, var(--orange) 0%, #C64F24 100%);
+      border-radius: 50% 50% 22px 22px/40px 40px 22px 22px;
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+    .stage::after {
+      content: "";
+      position: absolute;
+      inset: auto 8% -14px;
+      height: 30px;
+      background: rgba(0, 0, 0, .12);
+      filter: blur(14px);
+      border-radius: 50%;
+    }
+    .hero-phone {
+      position: relative;
+      z-index: 3;
+      width: 232px;
+      border-radius: 30px;
+      transform: translateX(-52px) rotate(-2deg);
+      filter: drop-shadow(0 26px 40px rgba(70, 35, 20, .3));
+      transition: transform .5s cubic-bezier(.34, 1.56, .64, 1);
+    }
+    .visual:hover .hero-phone {
+      transform: translateX(-52px) rotate(-2deg) translateY(-10px) scale(1.02);
+    }
+    .hero-book {
+      position: absolute;
+      z-index: 2;
+      right: -6px;
+      bottom: 96px;
+      width: 212px;
+      border-radius: 8px;
+      transform: rotate(3deg);
+      filter: drop-shadow(0 22px 36px rgba(70, 35, 20, .26));
+      transition: transform .5s cubic-bezier(.34, 1.56, .64, 1);
+    }
+    .visual:hover .hero-book {
+      transform: rotate(3deg) translateY(-8px) scale(1.02);
+    }
+
+    /* ============ PROBLEM ============ */
+    .problem {
+      background: var(--cream-2);
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .p-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding: 28px 26px;
+      transition: all .3s cubic-bezier(.34, 1.56, .64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .p-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transition: transform .35s;
+      transform-origin: left;
+    }
+    .p-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--orange);
+    }
+    .p-card:hover::before {
+      transform: scaleX(1);
+    }
+    .p-ico {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      background: var(--white);
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: transform .3s;
+    }
+    .p-card:hover .p-ico {
+      transform: scale(1.1) rotate(-5deg);
+    }
+    .p-card h3 {
+      font-size: 16.5px;
+      margin-bottom: 9px;
+    }
+    .p-card p {
+      font-size: 13.6px;
+      color: var(--muted);
+    }
+
+    /* ============ SOLUTION ============ */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 26px;
+    }
+    .s-item {
+      display: flex;
+      gap: 14px;
+      padding: 20px;
+      border-radius: var(--r-lg);
+      transition: all .3s;
+    }
+    .s-item:hover {
+      background: var(--card);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-sm);
+    }
+    .s-ico {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: var(--orange-tint);
+      display: grid;
+      place-items: center;
+      flex: none;
+      transition: transform .3s;
+    }
+    .s-item:hover .s-ico {
+      transform: scale(1.1) rotate(-8deg);
+    }
+    .s-item h3 {
+      font-size: 14.5px;
+      margin-bottom: 5px;
+    }
+    .s-item p {
+      font-size: 12.8px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ============ BANNER ============ */
+    .banner {
+      background: var(--dark);
+      border-radius: var(--r-xl);
+      color: #fff;
+      padding: 44px 52px;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 40px;
+      align-items: center;
+      transition: transform .3s;
+    }
+    .banner:hover {
+      transform: scale(1.005);
+    }
+    .banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(221, 96, 49, .08), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: float 8s ease-in-out infinite;
+    }
+    .banner::after {
+      content: "لسان";
+      position: absolute;
+      right: -10px;
+      bottom: -58px;
+      font-family: 'Amiri', serif;
+      font-size: 180px;
+      color: rgba(255, 255, 255, .035);
+      pointer-events: none;
+    }
+    .banner h2 {
+      font-size: clamp(22px, 2.8vw, 30px);
+    }
+    .banner h2 em {
+      font-style: normal;
+      color: var(--orange);
+      position: relative;
+    }
+    .banner h2 em::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--orange);
+      border-radius: 2px;
+    }
+    .banner p {
+      margin-top: 16px;
+      font-size: 14.5px;
+      color: rgba(255, 255, 255, .66);
+      max-width: 400px;
+    }
+    .flow {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+    .chip {
+      border: 1.5px solid rgba(255, 255, 255, .3);
+      border-radius: 14px;
+      padding: 13px 26px;
+      font-size: 16px;
+      font-weight: 700;
+      white-space: nowrap;
+      transition: all .3s;
+    }
+    .chip:hover {
+      border-color: var(--orange);
+      background: rgba(221, 96, 49, .1);
+    }
+    .chip.ar {
+      font-size: 19px;
+    }
+    .flow .arrow {
+      color: rgba(255, 255, 255, .45);
+      flex: none;
+      animation: arrowPulse 2s infinite;
+    }
+    @keyframes arrowPulse {
+      0%,
+      100% {
+        opacity: .45;
+        transform: translateX(0);
+      }
+      50% {
+        opacity: 1;
+        transform: translateX(4px);
+      }
+    }
+    .flow-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+    }
+    .flow-logo .disc {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      background: var(--orange);
+      display: grid;
+      place-items: center;
+      box-shadow: 0 10px 26px rgba(221, 96, 49, .4);
+      animation: discPulse 3s infinite;
+    }
+    @keyframes discPulse {
+      0%,
+      100% {
+        box-shadow: 0 10px 26px rgba(221, 96, 49, .4);
+      }
+      50% {
+        box-shadow: 0 10px 40px rgba(221, 96, 49, .6);
+      }
+    }
+    .disc-mark {
+      width: 28px;
+      height: 31px;
+      color: #fff;
+    }
+    .flow-logo small {
+      font-size: 9.5px;
+      letter-spacing: .22em;
+      font-weight: 700;
+      color: rgba(255, 255, 255, .8);
+    }
+
+    /* ============ FORMATS ============ */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .f-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding: 26px;
+      display: grid;
+      grid-template-columns: 158px 1fr;
+      gap: 24px;
+      align-items: center;
+      transition: all .3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .f-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--orange-glow), transparent);
+      opacity: 0;
+      transition: opacity .3s;
+      pointer-events: none;
+    }
+    .f-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--orange);
+    }
+    .f-card:hover::after {
+      opacity: 1;
+    }
+    .f-card h3 {
+      font-size: 19px;
+      margin-bottom: 9px;
+    }
+    .f-card>div>p {
+      font-size: 13.4px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .f-phone {
+      width: 142px;
+      margin: 0 auto;
+      border-radius: 20px;
+      transform: rotate(-3deg);
+      filter: drop-shadow(0 14px 24px rgba(70, 35, 20, .22));
+      transition: transform .5s;
+    }
+    .f-book {
+      width: 152px;
+      margin: 0 auto;
+      border-radius: 6px;
+      transform: rotate(2deg);
+      filter: drop-shadow(0 14px 24px rgba(70, 35, 20, .2));
+      transition: transform .5s;
+    }
+    .f-card:hover .f-phone {
+      transform: rotate(-3deg) translateY(-8px) scale(1.03);
+    }
+    .f-card:hover .f-book {
+      transform: rotate(2deg) translateY(-8px) scale(1.03);
+    }
+    .ticks {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .ticks li {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 12.9px;
+      font-weight: 600;
+      color: var(--ink-2);
+      transition: transform .2s, color .2s;
+    }
+    .ticks li:hover {
+      color: var(--orange);
+      transform: translateX(4px);
+    }
+    .tick {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #fff;
+      font-size: 8px;
+      display: grid;
+      place-items: center;
+      flex: none;
+      transition: transform .2s;
+    }
+    .ticks li:hover .tick {
+      transform: scale(1.2);
+    }
+
+    /* ============ AUDIENCE ============ */
+    .audience {
+      background: var(--cream-2);
+    }
+    .grid-5 {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+    .a-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--r-lg);
+      padding: 14px 16px 20px;
+      transition: all .3s cubic-bezier(.34, 1.56, .64, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .a-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transition: transform .35s;
+      transform-origin: left;
+    }
+    .a-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-md);
+    }
+    .a-card:hover::before {
+      transform: scaleX(1);
+    }
+    .a-img {
+      width: 100%;
+      height: 112px;
+      object-fit: cover;
+      border-radius: 14px;
+      margin-bottom: 14px;
+      transition: transform .4s;
+    }
+    .a-card:hover .a-img {
+      transform: scale(1.05);
+    }
+    .a-card h3 {
+      font-size: 13.6px;
+      margin-bottom: 7px;
+      transition: color .3s;
+    }
+    .a-card:hover h3 {
+      color: var(--orange);
+    }
+    .a-card p {
+      font-size: 11.8px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ============ STEPS ============ */
+    .steps-panel {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--r-xl);
+      padding: 32px 34px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      transition: all .3s;
+    }
+    .steps-panel:hover {
+      box-shadow: var(--shadow-md);
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center;
+      gap: 16px;
+      flex: 1;
+    }
+    .step {
+      display: flex;
+      gap: 14px;
+      padding: 16px;
+      border-radius: var(--r-lg);
+      transition: all .3s;
+    }
+    .step:hover {
+      background: var(--white);
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-sm);
+    }
+    .step .num {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--orange);
+      color: #fff;
+      font-weight: 800;
+      font-size: 14px;
+      display: grid;
+      place-items: center;
+      flex: none;
+      transition: transform .3s, box-shadow .3s;
+    }
+    .step:hover .num {
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(221, 96, 49, .4);
+    }
+    .step h3 {
+      font-size: 14.5px;
+      margin-bottom: 5px;
+    }
+    .step p {
+      font-size: 12.4px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .dash {
+      width: 100%;
+      min-width: 34px;
+      height: 14px;
+      color: var(--orange);
+      opacity: .6;
+    }
+    .target {
+      flex: none;
+      transition: transform .3s;
+    }
+    .steps-panel:hover .target {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    /* ============ BOOK PREVIEW ============ */
+    .spreads {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      overflow-x: auto;
+      padding: 6px 24px 22px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .spreads::-webkit-scrollbar {
+      height: 6px;
+    }
+    .spreads::-webkit-scrollbar-track {
+      background: var(--cream-2);
+      border-radius: 99px;
+    }
+    .spreads::-webkit-scrollbar-thumb {
+      background: var(--orange);
+      border-radius: 99px;
+    }
+    .spreads img {
+      flex: none;
+      height: 210px;
+      width: auto;
+      scroll-snap-align: center;
+      border-radius: 6px;
+      transition: all .35s cubic-bezier(.34, 1.56, .64, 1);
+      filter: drop-shadow(0 14px 26px rgba(70, 35, 20, .14));
+      cursor: pointer;
+    }
+    .spreads img:hover {
+      transform: translateY(-10px) scale(1.03);
+      filter: drop-shadow(0 20px 40px rgba(70, 35, 20, .2));
+    }
+    .pv-hint {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      animation: hintPulse 2s infinite;
+    }
+    @keyframes hintPulse {
+      0%,
+      100% {
+        opacity: .6;
+      }
+      50% {
+        opacity: 1;
+      }
+    }
+
+    /* ============ FAQ ============ */
+    .faq {
+      max-width: 840px;
+      margin: 0 auto;
+      display: grid;
+      gap: 12px;
+    }
+    .faq details {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all .3s;
+    }
+    .faq details[open] {
+      border-color: var(--orange);
+      box-shadow: var(--shadow-sm);
+    }
+    .faq summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 19px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-weight: 700;
+      font-size: 15.2px;
+      color: var(--ink);
+      transition: color .2s;
+    }
+    .faq summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq summary:hover {
+      color: var(--orange);
+    }
+    .faq .chev {
+      flex: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--orange-tint);
+      color: var(--orange);
+      display: grid;
+      place-items: center;
+      transition: all .3s;
+    }
+    .faq details[open] .chev {
+      transform: rotate(180deg);
+      background: var(--orange);
+      color: #fff;
+    }
+    .faq .ans {
+      padding: 0 22px 20px;
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 66ch;
+    }
+
+    /* ============ CTA ============ */
+    .cta {
+      background: var(--orange-deep);
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      padding: 56px 0;
+    }
+    .cta::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(255, 255, 255, .05), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: float 8s ease-in-out infinite;
+    }
+    .cta::after {
+      content: "لسان";
+      position: absolute;
+      left: -30px;
+      top: -70px;
+      font-family: 'Amiri', serif;
+      font-size: 230px;
+      color: rgba(255, 255, 255, .055);
+      pointer-events: none;
+      line-height: 1;
+    }
+    .cta-in {
+      display: grid;
+      grid-template-columns: 200px 1fr 1fr;
+      gap: 38px;
+      align-items: center;
+      position: relative;
+    }
+    .cta-art {
+      width: 200px;
+      border-radius: 12px;
+      transition: transform .5s;
+    }
+    .cta:hover .cta-art {
+      transform: translateY(-8px) rotate(-3deg) scale(1.02);
+    }
+    .cta h2 {
+      font-size: clamp(24px, 3.2vw, 34px);
+    }
+    .cta p {
+      margin-top: 14px;
+      font-size: 14.2px;
+      color: rgba(255, 255, 255, .85);
+      max-width: 420px;
+    }
+    .form {
+      display: grid;
+      gap: 12px;
+    }
+    .form input {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 16px 18px;
+      font-size: 14.5px;
+      background: #fff;
+      color: var(--ink);
+      outline: 2px solid transparent;
+      transition: all .3s;
+    }
+    .form input:focus {
+      outline-color: rgba(255, 255, 255, .75);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
+    }
+    .form .btn {
+      justify-content: center;
+      width: 100%;
+      border-radius: 12px;
+    }
+    .form small {
+      font-size: 11.6px;
+      color: rgba(255, 255, 255, .8);
+      text-align: center;
+      transition: color .3s;
+    }
+    .form .err {
+      color: #FFE3D8;
+      font-weight: 700;
+      animation: shake .5s;
+    }
+    .ok-msg {
+      background: rgba(255, 255, 255, .16);
+      border: 1px solid rgba(255, 255, 255, .35);
+      border-radius: 12px;
+      padding: 18px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 14.5px;
+      animation: slideDown .5s ease;
+    }
+
+    /* ============ FOOTER ============ */
+    .footer {
+      background: var(--dark);
+      color: #fff;
+      padding: 28px 0;
+    }
+    .footer-in {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .footer .brand-txt .tag {
+      color: rgba(255, 255, 255, .55);
+    }
+    .footer .brand .name {
+      background: linear-gradient(135deg, #fff, rgba(255, 255, 255, .7));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .f-nav {
+      display: flex;
+      gap: 34px;
+    }
+    .f-nav a {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, .8);
+      position: relative;
+      transition: color .3s;
+    }
+    .f-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--orange);
+      transition: width .3s;
+    }
+    .f-nav a:hover {
+      color: #fff;
+    }
+    .f-nav a:hover::after {
+      width: 100%;
+    }
+    .socials {
+      display: flex;
+      gap: 9px;
+    }
+    .socials a {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, .22);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      transition: all .3s cubic-bezier(.34, 1.56, .64, 1);
+    }
+    .socials a:hover {
+      background: var(--orange);
+      border-color: var(--orange);
+      transform: translateY(-3px) scale(1.05);
+    }
+    .socials .max-mark {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .04em;
+    }
+    .copyright {
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      margin-top: 22px;
+      padding-top: 16px;
+      font-size: 12px;
+      color: rgba(255, 255, 255, .45);
+      text-align: center;
+    }
+
+    /* ============ REVEAL ============ */
+    .js .rv {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s cubic-bezier(.2, .7, .3, 1), transform .7s cubic-bezier(.2, .7, .3, 1);
+    }
+    .js .rv.in {
+      opacity: 1;
+      transform: none;
+    }
+    .rv-delay-1 {
+      transition-delay: .08s;
+    }
+    .rv-delay-2 {
+      transition-delay: .16s;
+    }
+    .rv-delay-3 {
+      transition-delay: .24s;
+    }
+    .rv-delay-4 {
+      transition-delay: .32s;
+    }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1080px) {
+      .grid-5 {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+      .steps {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+      .dash {
+        display: none;
+      }
+      .steps-panel {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .target {
+        align-self: center;
+      }
+    }
+    @media (max-width: 900px) {
+      .nav,
+      .nav-cta {
+        display: none;
+      }
+      .burger {
+        display: grid;
+      }
+      .hero-in {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .hero-lead {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .hero-feats {
+        justify-content: center;
+      }
+      .visual {
+        height: 500px;
+        margin-top: 10px;
+      }
+      .hero-phone {
+        width: 224px;
+      }
+      .hero-book {
+        width: 196px;
+        bottom: 86px;
+      }
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .banner {
+        grid-template-columns: 1fr;
+        padding: 34px 30px;
+        text-align: center;
+      }
+      .banner p {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .flow {
+        justify-content: center;
+      }
+      .cta-in {
+        grid-template-columns: 1fr;
+        gap: 26px;
+        text-align: center;
+      }
+      .cta-art {
+        display: none;
+      }
+      .cta p {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+    @media (max-width: 720px) {
+      .sec {
+        padding: 56px 0;
+      }
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .grid-5 {
+        grid-template-columns: 1fr 1fr;
+      }
+      .f-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .f-card .ticks li {
+        justify-content: center;
+      }
+      .flow {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .footer-in {
+        flex-direction: column;
+        text-align: center;
+      }
+      .f-nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .faq summary {
+        font-size: 14.4px;
+        padding: 17px 18px;
+      }
+      .faq .ans {
+        padding: 0 18px 18px;
+        font-size: 13.4px;
+      }
+    }
+    @media (max-width: 560px) {
+      .brand-txt .tag {
+        display: none;
+      }
+      .brand-txt .name {
+        font-size: 21px;
+      }
+    }
+    @media (max-width: 480px) {
+      .grid-5 {
+        grid-template-columns: 1fr;
+      }
+      .grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .hero-feats {
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+      }
+      .hf {
+        max-width: 100%;
+        text-align: center;
+      }
+      .visual {
+        height: 440px;
+      }
+      .hero-phone {
+        width: 196px;
+        transform: translateX(-14px) rotate(-2deg);
+      }
+      .hero-book {
+        width: 166px;
+        right: -10px;
+        bottom: 78px;
+      }
+      .banner {
+        padding: 28px 22px;
+      }
+      .chip {
+        padding: 11px 18px;
+        font-size: 14px;
+      }
+      .spreads img {
+        height: 172px;
+      }
+      .steps-panel {
+        padding: 24px 20px;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      html {
+        scroll-behavior: auto;
+      }
+      .js .rv {
+        opacity: 1;
+        transform: none;
+      }
+      img[data-sk] {
+        background-image: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════════ SCROLL PROGRESS ═══════════ -->
+  <div class="scroll-progress" id="scrollProgress" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" aria-label="Прогресс чтения"></div>
+
+  <!-- ═══════════ LOGO SYMBOL ═══════════ -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="lisan-mark" viewBox="216 194 592 656">
+      <g fill="none" stroke="currentColor" stroke-width="63" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M277.5 789h468"/>
+        <path d="M511.5 256v399c0 77 33.5 112 148.5 112"/>
+      </g>
+    </symbol>
+  </svg>
+
+  <!-- ============ HEADER ============ -->
+  <header class="header" id="header" role="banner">
+    <div class="wrap header-in">
+      <a href="#" class="brand" aria-label="Lisan — на главную">
+        <svg class="brand-mark" aria-hidden="true"><use href="#lisan-mark"/></svg>
+        <span class="brand-txt">
+          <span class="name">LISAN</span>
+          <span class="tag">Учите арабский. Понимайте больше.</span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Основная навигация">
+        <a href="#about">О проекте</a>
+        <a href="#faq">Вопросы</a>
+        <a href="#blog">Блог</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+      <div style="display:flex;align-items:center;gap:12px">
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+          <svg id="moonIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg id="sunIcon" style="display:none" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a href="#waitlist" class="btn btn-primary nav-cta">Присоединиться</a>
+      </div>
+      <button class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mnav">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+
+    <nav class="mnav" id="mnav" aria-label="Мобильная навигация">
+      <a href="#about">О проекте
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l6 5-6 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#faq">Частые вопросы
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l6 5-6 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#blog">Блог
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l6 5-6 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#contacts">Контакты
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M5 3l6 5-6 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <div class="m-cta"><a href="#waitlist" class="btn btn-primary">Присоединиться</a></div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" aria-label="Lisan — изучение арабского языка">
+      <div class="hero-deco" aria-hidden="true">
+        <span>ا</span>
+        <span>ب</span>
+        <span>ت</span>
+        <span>م</span>
+        <span>س</span>
+      </div>
+      <div class="wrap hero-in">
+        <div class="hero-copy">
+          <h1>Учите арабский.<span class="or">На понятном вам языке.</span></h1>
+          <p class="hero-lead">Lisan — это современная система изучения арабского языка, созданная специально для русскоговорящих.</p>
+
+          <div class="hero-feats">
+            <div class="hf rv rv-delay-1">
+              <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                <rect x="3" y="6" width="26" height="20" rx="5" stroke="#DD6031" stroke-width="1.9"/>
+                <path d="M11 16h10M16 11v10" stroke="var(--ink)" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+              <p>Понятные объяснения<br>на русском языке</p>
+            </div>
+            <div class="hf rv rv-delay-2">
+              <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                <path d="M4 24l6-7 5 4 6-9 4 4" stroke="#DD6031" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M22 8h6v6" stroke="var(--ink)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <p>Пошаговый путь<br>от простого к сложному</p>
+            </div>
+            <div class="hf rv rv-delay-3">
+              <svg width="30" height="30" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+                <path d="M6 7h9a4 4 0 014 4v14a3.4 3.4 0 00-3.4-3.4H6V7z" stroke="#DD6031" stroke-width="1.9" stroke-linejoin="round"/>
+                <path d="M26 7h-3.6a4 4 0 00-4 4" stroke="var(--ink)" stroke-width="1.7" stroke-linecap="round"/>
+              </svg>
+              <p>Практика, которая<br>даёт результат</p>
+            </div>
+          </div>
+
+          <a href="#waitlist" class="btn btn-primary rv rv-delay-2">Присоединиться к списку ожидания
+            <svg class="arw" width="17" height="14" viewBox="0 0 17 14" fill="none" aria-hidden="true"><path d="M1 7h14m-5-5l5 5-5 5" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <p class="hero-note rv rv-delay-3">Будьте среди первых, кто получит доступ к Lisan.</p>
+        </div>
+
+        <div class="visual">
+          <div class="stage" aria-hidden="true"></div>
+          <img class="hero-book" data-sk src="img/book.webp" width="380" height="492" alt="Учебник Lisan — арабский язык для русскоговорящих, 17 уроков" loading="lazy">
+          <img class="hero-phone" data-sk src="img/phone.png" width="560" height="1176" fetchpriority="high" alt="Приложение Lisan: главный экран с уроками, прогрессом и баллами">
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROBLEM ============ -->
+    <section class="sec problem" id="about" aria-labelledby="problem-t">
+      <div class="sec-head wrap rv"><h2 class="sec-title" id="problem-t">Почему арабский кажется сложнее, чем должен?</h2></div>
+      <div class="wrap">
+        <div class="grid-3">
+          <article class="p-card rv rv-delay-1">
+            <div class="p-ico">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" stroke="#DD6031" stroke-width="1.8"/>
+                <path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18" stroke="#DD6031" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3>Интерфейсы не на вашем языке</h3>
+            <p>Большинство ресурсов используют английский как промежуточный язык. Это дополнительный барьер.</p>
+          </article>
+          <article class="p-card rv rv-delay-2">
+            <div class="p-ico">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M10 3h4v3.2a2 2 0 002 2H19v4h-3a2 2 0 100 4h3v4H5V5.2A2.2 2.2 0 017.2 3H10z" stroke="#DD6031" stroke-width="1.7" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Разрозненный контент</h3>
+            <p>Видео здесь, PDF там, списки слов без системы. Нет чёткого пути и понимания структуры.</p>
+          </article>
+          <article class="p-card rv rv-delay-3">
+            <div class="p-ico">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" stroke="#DD6031" stroke-width="1.8"/>
+                <path d="M9.4 9.4a2.7 2.7 0 015.2.9c0 1.8-2.6 2.1-2.6 3.9" stroke="#DD6031" stroke-width="1.7" stroke-linecap="round"/>
+                <circle cx="12" cy="17.2" r="1.05" fill="#DD6031"/>
+              </svg>
+            </div>
+            <h3>Вы не видите прогресса</h3>
+            <p>Сложно понять, что вы уже знаете, а что нужно изучить дальше. Нет ясного ориентира.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SOLUTION ============ -->
+    <section class="sec" aria-labelledby="sol-t">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <img class="sec-illo" src="img/illo-book.png" width="104" height="84" loading="lazy" alt="">
+          <h2 class="sec-title" id="sol-t">Мы сделали по-другому</h2>
+          <p class="sec-sub">Lisan объединяет всё, что нужно для уверенного изучения арабского языка.</p>
+        </div>
+        <div class="grid-4">
+          <div class="s-item rv rv-delay-1">
+            <div class="s-ico">
+              <svg width="27" height="27" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <path d="M14 8.2C12.2 6.6 9.6 5.8 6.4 5.8c-.9 0-1.6.1-2.4.2v14.6c.8-.1 1.5-.2 2.4-.2 3.2 0 5.8.8 7.6 2.4V8.2z" stroke="#DD6031" stroke-width="1.7" stroke-linejoin="round"/>
+                <path d="M14 8.2c1.8-1.6 4.4-2.4 7.6-2.4.9 0 1.6.1 2.4.2v14.6c-.8-.1-1.5-.2-2.4-.2-3.2 0-5.8.8-7.6 2.4V8.2z" stroke="#DD6031" stroke-width="1.7" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div><h3>Структурированный курс</h3><p>Пошаговые уроки от простого к сложному.</p></div>
+          </div>
+          <div class="s-item rv rv-delay-2">
+            <div class="s-ico">
+              <svg width="27" height="27" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <path d="M5 16.5v-3.2a9 9 0 0118 0v3.2" stroke="#DD6031" stroke-width="1.8" stroke-linecap="round"/>
+                <rect x="2.8" y="15.4" width="5.6" height="8.4" rx="2.8" stroke="#DD6031" stroke-width="1.8"/>
+                <rect x="19.6" y="15.4" width="5.6" height="8.4" rx="2.8" stroke="#DD6031" stroke-width="1.8"/>
+              </svg>
+            </div>
+            <div><h3>Слушайте и практикуйтесь</h3><p>Аудио от носителей языка и упражнения на произношение.</p></div>
+          </div>
+          <div class="s-item rv rv-delay-3">
+            <div class="s-ico">
+              <svg width="27" height="27" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <path d="M13.2 5.6a3.6 3.6 0 00-6.7 1.7A3.5 3.5 0 004.3 13a3.6 3.6 0 002.3 5.1 3.5 3.5 0 006.6 1.6V5.6z" stroke="#DD6031" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M14.8 5.6a3.6 3.6 0 016.7 1.7 3.5 3.5 0 012.2 5.7 3.6 3.6 0 01-2.3 5.1 3.5 3.5 0 01-6.6 1.6V5.6z" stroke="#DD6031" stroke-width="1.6" stroke-linejoin="round"/>
+                <path d="M9.4 10.2h2.2M9 14.6h2.6M16.4 10.2h2.2M16.4 14.6h2.6" stroke="#DD6031" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div><h3>Закрепляйте знания</h3><p>Тесты, задания и повторение для лучшего запоминания.</p></div>
+          </div>
+          <div class="s-item rv rv-delay-4">
+            <div class="s-ico">
+              <svg width="27" height="27" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+                <path d="M4 23V16m5 7v-11m5 7V9m5 7v-8" stroke="#DD6031" stroke-width="2.1" stroke-linecap="round"/>
+                <path d="M4.5 12.5l5-5 4.5 3.5 7-7" stroke="#DD6031" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M16.6 4h4.9v4.9" stroke="#DD6031" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div><h3>Отслеживайте прогресс</h3><p>Видите свой прогресс и оставайтесь мотивированными.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BANNER ============ -->
+    <section style="padding:8px 0 76px" aria-label="Обучение без английского">
+      <div class="wrap">
+        <div class="banner rv">
+          <div>
+            <h2>Никакого английского<br>между вами и <em>арабским</em>.</h2>
+            <p>Мы объясняем арабский язык на вашем родном языке — русском.</p>
+          </div>
+          <div class="flow">
+            <span class="chip">Русский</span>
+            <svg class="arrow" width="30" height="12" viewBox="0 0 30 12" fill="none" aria-hidden="true"><path d="M0 6h27m-5-5l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="flow-logo">
+              <div class="disc"><svg class="disc-mark" aria-hidden="true"><use href="#lisan-mark"/></svg></div>
+              <small>LISAN</small>
+            </div>
+            <svg class="arrow" width="30" height="12" viewBox="0 0 30 12" fill="none" aria-hidden="true"><path d="M0 6h27m-5-5l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="chip ar">العربية</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FORMATS ============ -->
+    <section class="sec" style="padding-top:0" aria-labelledby="fmt-t">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <img class="sec-illo" src="img/illo-headphones.png" width="87" height="92" loading="lazy" alt="">
+          <h2 class="sec-title" id="fmt-t">Больше, чем приложение</h2>
+          <p class="sec-sub">Два формата — одна цель: ваш результат.</p>
+        </div>
+        <div class="grid-2">
+          <article class="f-card rv rv-delay-1">
+            <img class="f-phone" data-sk src="img/phone.png" width="560" height="1176" loading="lazy" alt="Экран приложения Lisan">
+            <div>
+              <h3>Приложение Lisan</h3>
+              <p>Учитесь в любое время и в любом месте. Доступ к урокам, упражнениям, тестам и вашему прогрессу всегда под рукой.</p>
+              <ul class="ticks">
+                <li><span class="tick" aria-hidden="true">✓</span>Интерактивные уроки</li>
+                <li><span class="tick" aria-hidden="true">✓</span>Практика произношения</li>
+                <li><span class="tick" aria-hidden="true">✓</span>Тесты и повторение</li>
+                <li><span class="tick" aria-hidden="true">✓</span>Отслеживание прогресса</li>
+                <li><span class="tick" aria-hidden="true">✓</span>Избранные слова и фразы</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="f-card rv rv-delay-2">
+            <img class="f-book" data-sk src="img/book.webp" width="380" height="492" loading="lazy" alt="Обложка учебника Lisan">
+            <div>
+              <h3>Книга Lisan</h3>
+              <p>17 уроков, созданных специально для русскоговорящих. Подходит как для самостоятельного обучения, так и для занятий с преподавателем.</p>
+              <ul class="ticks">
+                <li><span class="tick" aria-hidden="true">✓</span>Понятные объяснения на русском</li>
+                <li><span class="tick" aria-hidden="true">✓</span>Полезная лексика и диалоги</li>
+                <li><span class="tick" aria-hidden="true">✓</span>Грамматика простыми словами</li>
+                <li><span class="tick" aria-hidden="true">✓</span>Упражнения для закрепления</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ AUDIENCE ============ -->
+    <section class="sec audience" aria-labelledby="aud-t">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <img class="sec-illo" src="img/illo-chat.png" width="82" height="80" loading="lazy" alt="">
+          <h2 class="sec-title" id="aud-t">Для кого Lisan?</h2>
+        </div>
+        <div class="grid-5">
+          <article class="a-card rv rv-delay-1">
+            <img class="a-img" data-sk src="img/aud-traveller.jpg" width="178" height="140" loading="lazy" alt="Путешественник с картой">
+            <h3>Для путешественников</h3>
+            <p>Хотите уверенно общаться в поездках и понимать местных жителей.</p>
+          </article>
+          <article class="a-card rv rv-delay-2">
+            <img class="a-img" data-sk src="img/aud-student.jpg" width="168" height="140" loading="lazy" alt="Студент за учебниками">
+            <h3>Для студентов</h3>
+            <p>Нужна чёткая система обучения и прочная база для дальнейшего роста.</p>
+          </article>
+          <article class="a-card rv rv-delay-3">
+            <img class="a-img" data-sk src="img/aud-expat.jpg" width="172" height="140" loading="lazy" alt="Человек на фоне города в арабской стране">
+            <h3>Для тех, кто живёт в арабских странах</h3>
+            <p>Хотите лучше понимать окружающих и легко решать повседневные задачи.</p>
+          </article>
+          <article class="a-card rv rv-delay-4">
+            <img class="a-img" data-sk src="img/aud-culture.jpg" width="174" height="140" loading="lazy" alt="Человек читает книгу на фоне мечети">
+            <h3>Для интересующихся культурой и религией</h3>
+            <p>Стремитесь понимать арабский язык глубже и читать священные тексты с правильным произношением.</p>
+          </article>
+          <article class="a-card rv rv-delay-1">
+            <img class="a-img" data-sk src="img/aud-selflearn.jpg" width="188" height="140" loading="lazy" alt="Человек самостоятельно учится за ноутбуком">
+            <h3>Для самостоятельных учеников</h3>
+            <p>Любите учиться в своём темпе и без привязки к расписанию.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STEPS ============ -->
+    <section class="sec" aria-labelledby="how-t">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <img class="sec-illo" src="img/illo-checklist.png" width="98" height="98" loading="lazy" alt="">
+          <h2 class="sec-title" id="how-t">Как это работает?</h2>
+        </div>
+        <div class="steps-panel rv">
+          <div class="steps">
+            <div class="step rv rv-delay-1">
+              <span class="num">01</span>
+              <div><h3>Начните с вашего уровня</h3><p>Пройдите небольшой тест и мы подберём подходящий уровень для старта.</p></div>
+            </div>
+            <svg class="dash" viewBox="0 0 60 14" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M1 7h50m-6-5l6 5-6 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 5"/></svg>
+            <div class="step rv rv-delay-2">
+              <span class="num">02</span>
+              <div><h3>Учитесь каждый день</h3><p>Короткие уроки и практика, которые легко вписать в ваш день.</p></div>
+            </div>
+            <svg class="dash" viewBox="0 0 60 14" fill="none" preserveAspectRatio="none" aria-hidden="true"><path d="M1 7h50m-6-5l6 5-6 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 5"/></svg>
+            <div class="step rv rv-delay-3">
+              <span class="num">03</span>
+              <div><h3>Повторяйте и прогрессируйте</h3><p>Закрепляйте знания, проходите тесты и наблюдайте за своим прогрессом.</p></div>
+            </div>
+          </div>
+          <svg class="target" width="66" height="66" viewBox="0 0 72 72" fill="none" aria-hidden="true">
+            <circle cx="33" cy="39" r="22" stroke="#DD6031" stroke-width="2.4"/>
+            <circle cx="33" cy="39" r="13" stroke="#DD6031" stroke-width="2.4"/>
+            <circle cx="33" cy="39" r="4.6" fill="#DD6031"/>
+            <path d="M33 39L63 11" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M55 9h9v9" stroke="var(--ink)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BOOK PREVIEW ============ -->
+    <section class="sec" style="padding-top:0" aria-labelledby="inside-t">
+      <div class="wrap">
+        <div class="sec-head rv" style="margin-bottom:34px">
+          <h2 class="sec-title" id="inside-t">Загляните внутрь книги</h2>
+          <p class="sec-sub">17 уроков, которые проведут вас от самых азов до уверенного общения.</p>
+        </div>
+      </div>
+      <div class="spreads rv" role="list" aria-label="Развороты книги Lisan">
+        <img role="listitem" data-sk src="img/spread-1.jpg" width="440" height="306" loading="lazy" alt="Урок 2 «Рынок»: иллюстрация и новые слова с переводом">
+        <img role="listitem" data-sk src="img/spread-3.jpg" width="313" height="300" loading="lazy" alt="Упражнения: напишите слова под картинками и выберите правильный вариант">
+        <img role="listitem" data-sk src="img/spread-2.jpg" width="276" height="303" loading="lazy" alt="Грамматика: определённый артикль «аль» с примерами">
+        <img role="listitem" data-sk src="img/spread-4.jpg" width="410" height="300" loading="lazy" alt="Диалог с переводом и QR-код для прослушивания">
+      </div>
+      <p class="pv-hint">← Листайте, чтобы посмотреть развороты →</p>
+    </section>
+
+    <!-- ============ FAQ ============ -->
+    <section class="sec" id="faq" style="padding-top:20px" aria-labelledby="faq-t">
+      <div class="wrap">
+        <div class="sec-head rv">
+          <h2 class="sec-title" id="faq-t">Частые вопросы</h2>
+          <p class="sec-sub">Всё, что чаще всего спрашивают о Lisan.</p>
+        </div>
+        <div class="faq rv">
+          <details>
+            <summary>Когда Lisan станет доступен?<span class="chev" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5l5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+            <p class="ans">Мы завершаем работу над первой версией приложения и учебника. Оставьте свой email в форме выше — вы узнаете о запуске одними из первых и получите доступ раньше остальных.</p>
+          </details>
+          <details>
+            <summary>Нужны ли начальные знания арабского языка?<span class="chev" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5l5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+            <p class="ans">Нет. Курс начинается с самых азов — арабского алфавита и произношения, поэтому он подойдёт даже тем, кто никогда раньше не изучал арабский язык.</p>
+          </details>
+          <details>
+            <summary>Чем Lisan отличается от других курсов?<span class="chev" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5l5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+            <p class="ans">Всё обучение построено на русском языке: объяснения, грамматика и переводы даются напрямую, без английского как промежуточного языка. Это убирает лишний барьер и ускоряет понимание.</p>
+          </details>
+          <details>
+            <summary>Приложение и книга — это одно и то же?<span class="chev" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5l5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+            <p class="ans">Они дополняют друг друга. В книге — 17 структурированных уроков с объяснениями и упражнениями, в приложении — практика, аудио от носителей языка, тесты и отслеживание прогресса.</p>
+          </details>
+          <details>
+            <summary>Сколько времени нужно заниматься?<span class="chev" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5l5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+            <p class="ans">Достаточно 10–15 минут в день. Уроки короткие и разбиты на небольшие шаги, поэтому их легко вписать в любое расписание — регулярность важнее длительности.</p>
+          </details>
+          <details>
+            <summary>Подойдёт ли курс для чтения священных текстов?<span class="chev" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5l5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+            <p class="ans">Да. Мы уделяем особое внимание правильному произношению и чтению арабского текста с огласовками, что помогает читать священные тексты осознанно и без ошибок.</p>
+          </details>
+          <details>
+            <summary>Сколько будет стоить Lisan?<span class="chev" aria-hidden="true"><svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5l5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></summary>
+            <p class="ans">Финальные условия мы определим ближе к запуску. Подписчики списка ожидания получат специальное предложение и узнают о ценах раньше всех.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta" id="waitlist" aria-labelledby="cta-t">
+      <div class="wrap cta-in">
+        <img class="cta-art" data-sk src="img/mailbox.jpg" width="199" height="250" loading="lazy" alt="">
+        <div>
+          <h2 id="cta-t">Будьте первыми,<br>кто откроет Lisan</h2>
+          <p>Мы работаем над тем, чтобы сделать изучение арабского языка понятным, интересным и эффективным. Оставьте свой email, и мы уведомим вас о запуске.</p>
+        </div>
+        <form class="form" id="waitForm" novalidate>
+          <label for="email" class="sr-only">Ваш email</label>
+          <input type="email" id="email" name="email" placeholder="Ваш email" autocomplete="email" required>
+          <button type="submit" class="btn btn-dark">Присоединиться к списку ожидания
+            <svg class="arw" width="17" height="14" viewBox="0 0 17 14" fill="none" aria-hidden="true"><path d="M1 7h14m-5-5l5 5-5 5" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <small id="formNote" role="status">Без спама. Только важные новости о запуске.</small>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer" id="contacts" role="contentinfo">
+    <div class="wrap">
+      <div class="footer-in">
+        <div class="brand">
+          <svg class="brand-mark" aria-hidden="true"><use href="#lisan-mark"/></svg>
+          <span class="brand-txt"><span class="name">LISAN</span><span class="tag">Учите арабский.<br>Понимайте больше.</span></span>
+        </div>
+        <nav class="f-nav" aria-label="Навигация в подвале">
+          <a href="#about">О проекте</a>
+          <a href="#faq">Вопросы</a>
+          <a href="#blog">Блог</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+        <div class="socials">
+          <a href="#" aria-label="Lisan в Instagram" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.4"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="Lisan в Telegram" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21.9 4.3L18.6 20c-.2 1.1-.9 1.4-1.8.9l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.3-.1-.5-.6-.2L6.2 13.1l-4.8-1.5c-1-.3-1-1 .2-1.5l18.8-7.2c.9-.3 1.6.2 1.5 1.4z"/></svg>
+          </a>
+          <a href="#" aria-label="Lisan в MAX" rel="noopener"><span class="max-mark" aria-hidden="true">MAX</span></a>
+          <a href="#" aria-label="Lisan в TikTok" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.7 5.8A4.3 4.3 0 0115.6 3h-3.1v12.4a2.6 2.6 0 11-2.6-2.6c.28 0 .55.05.8.13V9.7a5.7 5.7 0 00-.8-.06 5.7 5.7 0 105.7 5.7V9a7.3 7.3 0 004.3 1.4V7.3a4.3 4.3 0 01-3.2-1.5z"/></svg>
+          </a>
+          <a href="#" aria-label="Lisan во ВКонтакте" rel="noopener">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.9 16.9c-5.3 0-8.6-3.7-8.7-9.8h2.7c.1 4.5 2.1 6.4 3.6 6.8V7.1h2.5v3.9c1.5-.16 3.05-1.9 3.57-3.9h2.5c-.4 2.47-2.07 4.2-3.26 4.9 1.19.57 3.09 2.09 3.82 4.9h-2.75c-.57-1.8-1.98-3.2-3.88-3.39v3.39h-.1z"/></svg>
+          </a>
+        </div>
+      </div>
+      <p class="copyright">© <span id="year">2026</span> Lisan. Учите арабский. Понимайте больше.</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════ STRUCTURED DATA ═══════════ -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [{
+        "@type": "Organization",
+        "@id": "https://lisan.app/#org",
+        "name": "Lisan",
+        "url": "https://lisan.app/",
+        "description": "Система изучения арабского языка для русскоговорящих.",
+        "logo": "https://lisan.app/img/og-cover.jpg"
+      }, {
+        "@type": "WebSite",
+        "@id": "https://lisan.app/#site",
+        "url": "https://lisan.app/",
+        "name": "Lisan — арабский язык для русскоговорящих",
+        "inLanguage": "ru-RU",
+        "publisher": { "@id": "https://lisan.app/#org" }
+      }, {
+        "@type": "Course",
+        "name": "Lisan — курс арабского языка для русскоговорящих",
+        "description": "17 структурированных уроков арабского языка на русском: алфавит, произношение, лексика, грамматика и диалоги.",
+        "inLanguage": "ru-RU",
+        "teaches": "Арабский язык",
+        "provider": { "@id": "https://lisan.app/#org" }
+      }]
+    }
+  </script>
+
+  <script>
+    (function() {
+      'use strict';
+
+      // ===== SCROLL PROGRESS =====
+      var progress = document.getElementById('scrollProgress');
+      window.addEventListener('scroll', function() {
+        var scrollTop = window.scrollY;
+        var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var pct = docHeight ? (scrollTop / docHeight) * 100 : 0;
+        progress.style.width = pct + '%';
+        progress.setAttribute('aria-valuenow', Math.round(pct));
+      }, { passive: true });
+
+      // ===== THEME TOGGLE =====
+      var toggle = document.getElementById('themeToggle');
+      var moon = document.getElementById('moonIcon');
+      var sun = document.getElementById('sunIcon');
+      var saved = localStorage.getItem('lisan-theme');
+
+      if (saved === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        moon.style.display = 'none';
+        sun.style.display = 'block';
+      }
+
+      toggle.addEventListener('click', function() {
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('lisan-theme', 'light');
+          moon.style.display = 'block';
+          sun.style.display = 'none';
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          localStorage.setItem('lisan-theme', 'dark');
+          moon.style.display = 'none';
+          sun.style.display = 'block';
+        }
+      });
+
+      // ===== HEADER SHADOW =====
+      var header = document.getElementById('header');
+      window.addEventListener('scroll', function() {
+        header.classList.toggle('stuck', window.scrollY > 8);
+      }, { passive: true });
+
+      // ===== MOBILE MENU =====
+      var burger = document.getElementById('burger');
+      var mnav = document.getElementById('mnav');
+
+      function setMenu(open) {
+        mnav.classList.toggle('open', open);
+        burger.setAttribute('aria-expanded', String(open));
+        burger.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+        document.body.classList.toggle('scroll-lock', open);
+      }
+
+      burger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        setMenu(!mnav.classList.contains('open'));
+      });
+
+      mnav.querySelectorAll('a').forEach(function(a) {
+        a.addEventListener('click', function() { setMenu(false); });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (mnav.classList.contains('open') && !mnav.contains(e.target) && e.target !== burger) {
+          setMenu(false);
+        }
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') setMenu(false);
+      });
+
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 900) setMenu(false);
+      });
+
+      // ===== IMAGE SKELETONS =====
+      function markLoaded(img) {
+        img.classList.add('is-loaded');
+      }
+
+      function initSkeletons() {
+        document.querySelectorAll('img[data-sk]:not(.is-loaded)').forEach(function(img) {
+          if (img.complete && img.naturalWidth) {
+            markLoaded(img);
+          } else {
+            img.addEventListener('load', function() { markLoaded(img); }, { once: true });
+            img.addEventListener('error', function() { markLoaded(img); }, { once: true });
+          }
+        });
+      }
+      initSkeletons();
+      window.addEventListener('load', initSkeletons);
+      setTimeout(function() {
+        document.querySelectorAll('img[data-sk]').forEach(markLoaded);
+      }, 6000);
+
+      // ===== REVEAL ON SCROLL =====
+      function revealAll() {
+        document.querySelectorAll('.rv').forEach(function(el) {
+          el.classList.add('in');
+        });
+      }
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        document.querySelectorAll('.rv').forEach(function(el, i) {
+          var delay = (i % 5) * 60;
+          el.style.transitionDelay = delay + 'ms';
+          io.observe(el);
+        });
+
+        setTimeout(revealAll, 2500);
+      } else {
+        revealAll();
+      }
+
+      // ===== FAQ: ONLY ONE OPEN =====
+      document.querySelectorAll('.faq details').forEach(function(d) {
+        d.addEventListener('toggle', function() {
+          if (d.open) {
+            document.querySelectorAll('.faq details').forEach(function(o) {
+              if (o !== d) o.open = false;
+            });
+          }
+        });
+      });
+
+      // ===== YEAR =====
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // ===== WAITLIST FORM =====
+      var form = document.getElementById('waitForm');
+      var note = document.getElementById('formNote');
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var email = document.getElementById('email').value.trim();
+        var valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+
+        if (!valid) {
+          note.textContent = 'Введите корректный email, пожалуйста.';
+          note.classList.add('err');
+          document.getElementById('email').focus();
+          setTimeout(function() { note.classList.remove('err'); }, 500);
+          return;
+        }
+
+        form.innerHTML =
+          '<div class="ok-msg">✨ Спасибо! Мы напишем вам, как только Lisan запустится.</div>';
+      });
+
+      // ===== SMOOTH SCROLL FOR ANCHORS =====
+      document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+        anchor.addEventListener('click', function(e) {
+          var targetId = this.getAttribute('href');
+          if (targetId === '#') return;
+          var target = document.querySelector(targetId);
+          if (target) {
+            e.preventDefault();
+            var headerHeight = header.offsetHeight;
+            var pos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 16;
+            window.scrollTo({ top: pos, behavior: 'smooth' });
+          }
+        });
+      });
+
+    })();
+  </script>
+
+</body>
+</html>
