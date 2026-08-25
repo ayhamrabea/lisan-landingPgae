@@ -3,389 +3,560 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Lisan — арабский язык на русском</title>
-  <meta name="description" content="Lisan помогает русскоговорящим понимать арабский язык через живой контекст, культуру и ежедневную практику.">
-  <meta name="theme-color" content="#07091b">
+  <title>Lisan — арабский язык с понятным маршрутом</title>
+  <meta name="description" content="Lisan — мобильное приложение для русскоговорящих, которые хотят учить арабский последовательно: короткие уроки, живая практика и умное повторение.">
+  <meta name="theme-color" content="#07182b">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Lisan — понимайте арабский, а не просто запоминайте слова">
-  <meta property="og:description" content="Пошаговый курс арабского языка на русском — от первых букв до свободного общения.">
-  <meta property="og:image" content="img/og-cover.jpg">
-  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <meta property="og:title" content="Lisan — арабский, который остаётся с вами">
+  <meta property="og:description" content="Понятный курс арабского на русском: интерактивные уроки, произношение, повторение и прогресс.">
+  <meta property="og:image" content="img/lisan-night-hero.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="lisan-waitlist-endpoint" content="">
+  <link rel="icon" href="img/app-icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="img/app-icon.png">
+  <link rel="preload" href="img/lisan-night-hero.png" as="image" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #060818;
-      --bg-soft: #0a0d22;
-      --panel: rgba(16, 19, 43, .84);
-      --panel-strong: #11142d;
-      --panel-lite: #171a38;
-      --line: rgba(175, 137, 255, .18);
-      --line-bright: rgba(184, 132, 255, .38);
-      --text: #f7f3ff;
-      --muted: #aaa9bd;
-      --purple: #9f55ed;
-      --purple-2: #c06cff;
-      --violet: #6f37c8;
-      --gold: #d79551;
-      --green: #66d9bd;
-      --danger: #e27187;
-      --wrap: 1220px;
-      --radius: 18px;
-      --shadow: 0 24px 70px rgba(0, 0, 0, .34);
+      --ink: #f8f6ff;
+      --muted: #a8b2c3;
+      --muted-2: #768398;
+      --navy: #050918;
+      --navy-2: #080f25;
+      --navy-3: #111936;
+      --card: rgba(10, 20, 46, .84);
+      --card-solid: #0c1733;
+      --line: rgba(183, 157, 225, .16);
+      --line-strong: rgba(190, 121, 246, .42);
+      --accent: #a264df;
+      --accent-soft: #c59aee;
+      --accent-deep: #7442c5;
+      --teal: #1aa6a7;
+      --orange: #d9954f;
+      --green: #67cf9a;
+      --danger: #f17884;
+      --cream: #f5eee5;
+      --wrap: 1180px;
+      --radius-sm: 14px;
+      --radius: 22px;
+      --radius-lg: 34px;
+      --shadow: 0 28px 80px rgba(0, 0, 0, .28);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
+      margin: 0;
       min-width: 320px;
       overflow-x: hidden;
-      font-family: Manrope, system-ui, sans-serif;
-      color: var(--text);
+      color: var(--ink);
       background:
-        radial-gradient(circle at 82% 4%, rgba(91, 42, 151, .27), transparent 27rem),
-        radial-gradient(circle at 13% 42%, rgba(34, 48, 116, .18), transparent 30rem),
-        var(--bg);
-      line-height: 1.55;
+        radial-gradient(circle at 12% 28%, rgba(55, 103, 139, .18), transparent 30rem),
+        radial-gradient(circle at 87% 55%, rgba(101, 75, 180, .16), transparent 34rem),
+        var(--navy);
+      font: 400 16px/1.65 Manrope, "Segoe UI", sans-serif;
       -webkit-font-smoothing: antialiased;
     }
+
     body::before {
       content: "";
       position: fixed;
       inset: 0;
       z-index: -1;
       pointer-events: none;
-      opacity: .32;
+      opacity: .22;
       background-image:
-        radial-gradient(circle at 11% 17%, #fff 0 1px, transparent 1.4px),
-        radial-gradient(circle at 72% 12%, #caa9ff 0 1px, transparent 1.5px),
-        radial-gradient(circle at 43% 73%, #fff 0 1px, transparent 1.3px),
-        radial-gradient(circle at 90% 52%, #b26cff 0 1px, transparent 1.4px);
-      background-size: 190px 190px, 240px 240px, 280px 280px, 330px 330px;
+        radial-gradient(circle at center, rgba(255,255,255,.75) 0 1px, transparent 1.4px),
+        radial-gradient(circle at center, rgba(181,175,232,.6) 0 1px, transparent 1.3px);
+      background-position: 0 0, 72px 48px;
+      background-size: 180px 180px, 260px 260px;
     }
+
     img { display: block; max-width: 100%; }
     a { color: inherit; text-decoration: none; }
     button, input { font: inherit; }
     button { color: inherit; }
-    :focus-visible { outline: 3px solid var(--purple-2); outline-offset: 3px; }
+    :focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 4px; }
     .wrap { width: min(var(--wrap), calc(100% - 48px)); margin-inline: auto; }
-    .serif { font-family: "Playfair Display", Georgia, serif; }
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #cf9dff;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-    }
-    .eyebrow::before { content: ""; width: 24px; height: 1px; background: currentColor; }
-    .section { padding: 48px 0; position: relative; }
-    .section-title {
-      margin-bottom: 22px;
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: clamp(25px, 3vw, 36px);
-      line-height: 1.15;
-      letter-spacing: -.02em;
-    }
-    .section-title.center { text-align: center; }
-    .section-title.center::after {
-      content: "";
-      display: block;
-      width: 44px;
-      height: 2px;
-      margin: 11px auto 0;
-      background: linear-gradient(90deg, transparent, var(--purple-2), transparent);
-    }
-    .muted { color: var(--muted); }
-    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .arabic { font-family: "IBM Plex Sans Arabic", Tahoma, sans-serif; direction: rtl; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
-    .topbar {
-      position: absolute;
-      inset: 0 0 auto;
-      z-index: 20;
-      transition: background .25s, border-color .25s;
+    .announcement {
+      position: relative;
+      z-index: 30;
+      min-height: 36px;
+      display: grid;
+      place-items: center;
+      padding: 7px 48px;
+      color: #e6e1ff;
+      text-align: center;
+      font-size: 12px;
+      background: linear-gradient(90deg, #3f3288, #6f58bd 50%, #3f3288);
     }
-    .topbar.stuck {
+    .announcement b { color: #fff; }
+    .announcement .arabic { margin-inline: 8px; color: #fff3d9; font-size: 14px; }
+
+    .site-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 25;
+      border-bottom: 1px solid transparent;
+      transition: background .25s, border-color .25s, transform .25s;
+    }
+    .site-header.stuck {
       position: fixed;
-      background: rgba(5, 7, 22, .84);
-      border-bottom: 1px solid var(--line);
+      top: 0;
+      background: rgba(6, 21, 36, .88);
+      border-color: var(--line);
       backdrop-filter: blur(18px);
     }
-    .nav-in { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 26px; }
-    .brand { display: inline-flex; align-items: center; gap: 10px; flex: none; }
-    .brand img { width: 26px; height: 32px; object-fit: contain; filter: brightness(0) invert(1) sepia(1) saturate(5) hue-rotate(220deg); }
-    .brand span { font: 700 27px/1 "Playfair Display", Georgia, serif; letter-spacing: .01em; }
-    .nav-links { display: flex; align-items: center; gap: clamp(22px, 4vw, 50px); }
-    .nav-links a { position: relative; color: #e5dff0; font-size: 13px; font-weight: 600; }
-    .nav-links a::after { content: ""; position: absolute; left: 0; right: 100%; bottom: -7px; height: 1px; background: var(--purple-2); transition: right .25s; }
-    .nav-links a:hover::after { right: 0; }
-    .btn {
+    .nav { min-height: 76px; display: flex; align-items: center; gap: 32px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; flex: none; }
+    .brand img { width: 34px; height: 40px; object-fit: contain; }
+    .brand-copy { display: grid; line-height: 1; }
+    .brand-copy strong { font-size: 23px; letter-spacing: -.04em; }
+    .brand-copy small { margin-top: 6px; color: #9eabc0; font-size: 8px; letter-spacing: .08em; text-transform: uppercase; }
+    .nav-links { margin-left: auto; display: flex; align-items: center; gap: 30px; }
+    .nav-links a { color: #c4cbd8; font-size: 13px; font-weight: 600; transition: color .2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .menu-button { display: none; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 13px; background: rgba(10,31,52,.82); cursor: pointer; }
+    .menu-button span, .menu-button::before, .menu-button::after { content: ""; display: block; width: 18px; height: 2px; margin: 4px auto; border-radius: 2px; background: #fff; transition: .2s; }
+    .menu-button.open span { opacity: 0; }
+    .menu-button.open::before { transform: translateY(6px) rotate(45deg); }
+    .menu-button.open::after { transform: translateY(-6px) rotate(-45deg); }
+
+    .button {
+      min-height: 48px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-height: 46px;
+      gap: 9px;
       padding: 0 22px;
       border: 1px solid transparent;
-      border-radius: 10px;
+      border-radius: 15px;
       cursor: pointer;
       font-size: 13px;
       font-weight: 800;
-      transition: transform .2s, box-shadow .2s, background .2s;
+      transition: transform .2s, background .2s, border-color .2s, box-shadow .2s;
     }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary {
-      background: linear-gradient(135deg, #ab5ef3, #6632ba);
-      box-shadow: 0 10px 30px rgba(142, 67, 225, .32), inset 0 1px rgba(255,255,255,.2);
-    }
-    .btn-primary:hover { box-shadow: 0 14px 38px rgba(142, 67, 225, .47), inset 0 1px rgba(255,255,255,.2); }
-    .btn-outline { border-color: var(--line-bright); background: rgba(12, 13, 34, .62); color: #d8a5ff; }
-    .nav-cta { min-height: 42px; }
-    .menu-btn { display: none; width: 44px; height: 42px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); cursor: pointer; }
-    .menu-btn i, .menu-btn::before, .menu-btn::after { content: ""; display: block; width: 18px; height: 2px; margin: 4px auto; border-radius: 2px; background: var(--text); transition: .25s; }
-    .menu-btn.open i { opacity: 0; }
-    .menu-btn.open::before { transform: translateY(6px) rotate(45deg); }
-    .menu-btn.open::after { transform: translateY(-6px) rotate(-45deg); }
+    .button:hover { transform: translateY(-2px); }
+    .button-primary { color: #fff; background: linear-gradient(135deg, #9c88ec, #6e55cf); box-shadow: 0 14px 35px rgba(99, 77, 195, .3), inset 0 1px rgba(255,255,255,.28); }
+    .button-primary:hover { box-shadow: 0 18px 44px rgba(111, 83, 213, .45), inset 0 1px rgba(255,255,255,.3); }
+    .button-ghost { border-color: rgba(210,220,239,.2); background: rgba(6, 21, 36, .46); color: #e8ebf2; }
+    .button-small { min-height: 42px; padding-inline: 17px; border-radius: 13px; }
+    .button .arrow { font-size: 18px; transition: transform .2s; }
+    .button:hover .arrow { transform: translateX(3px); }
+    .mobile-sticky-cta { display: none; }
+    .swipe-hint { display: none; }
 
     .hero {
       position: relative;
-      min-height: 705px;
+      min-height: 780px;
+      display: flex;
+      align-items: center;
       overflow: hidden;
-      padding: 122px 0 52px;
-      border-bottom: 1px solid rgba(146, 94, 212, .11);
+      padding: 138px 0 82px;
       background:
-        linear-gradient(90deg, rgba(5, 7, 22, .98) 0%, rgba(5, 7, 22, .87) 37%, rgba(8, 7, 30, .25) 72%, rgba(7, 6, 28, .1)),
-        radial-gradient(circle at 74% 30%, rgba(104, 48, 168, .58), transparent 24rem),
-        linear-gradient(180deg, #090a24 0%, #0a0920 57%, #07091b 100%);
+        linear-gradient(90deg, rgba(4, 15, 29, .98) 0%, rgba(4, 15, 29, .9) 35%, rgba(4,15,29,.18) 65%, rgba(4,15,29,.02) 100%),
+        linear-gradient(180deg, rgba(4,15,29,.06) 65%, var(--navy) 100%),
+        url("img/lisan-night-hero.webp") 62% center / cover no-repeat;
     }
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 520px;
-      height: 520px;
-      right: 4%;
-      top: 7%;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(163, 84, 231, .18), rgba(92, 39, 147, .04) 56%, transparent 70%);
-      filter: blur(4px);
-    }
-    .hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: .92fr 1.18fr; align-items: center; gap: 30px; }
-    .hero-copy { padding-top: 12px; }
-    .hero h1 { max-width: 570px; font: 700 clamp(40px, 4.7vw, 67px)/1.04 "Playfair Display", Georgia, serif; letter-spacing: -.03em; }
-    .hero h1 span { display: block; margin-top: 8px; color: #b669f4; font-size: .78em; line-height: 1.08; }
-    .hero-lead { max-width: 560px; margin-top: 22px; color: #d1ccdc; font-size: 16px; }
-    .wait-form { display: flex; gap: 12px; max-width: 535px; margin-top: 24px; }
-    .wait-form input {
-      width: 100%;
-      min-height: 48px;
-      padding: 0 16px;
-      color: var(--text);
-      background: rgba(6, 8, 25, .72);
-      border: 1px solid rgba(171, 130, 231, .32);
-      border-radius: 9px;
-    }
-    .wait-form input::placeholder { color: #9793a8; }
-    .wait-form .btn { flex: none; }
-    .form-status { min-height: 20px; margin-top: 9px; color: #86e5cb; font-size: 12px; }
-    .proof { display: flex; align-items: center; gap: 12px; margin-top: 12px; color: #d3cddd; font-size: 12px; }
-    .avatars { display: flex; }
-    .avatars img { width: 31px; height: 31px; margin-left: -7px; border: 2px solid #0b0c21; border-radius: 50%; object-fit: cover; }
-    .avatars img:first-child { margin-left: 0; }
-    .proof b { color: #fff; }
-    .hero-features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; max-width: 570px; margin-top: 34px; }
-    .hero-feature { min-width: 0; }
-    .mini-icon { display: grid; place-items: center; width: 34px; height: 34px; margin-bottom: 8px; color: #be75ff; border: 1px solid rgba(186, 112, 255, .38); border-radius: 9px; font-size: 18px; }
-    .hero-feature strong { display: block; font-size: 11px; }
-    .hero-feature small { display: block; margin-top: 3px; color: #8f8da2; font-size: 9px; line-height: 1.35; }
-
-    .hero-art { position: relative; min-height: 535px; }
-    .moon { position: absolute; right: 13%; top: 0; width: 112px; aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #c69df8, #7c3eaf 47%, rgba(102,51,142,.22) 68%, transparent 70%); opacity: .37; box-shadow: 0 0 64px rgba(172, 89, 240, .45); }
-    .phone {
+    .hero::after { content: ""; position: absolute; inset: auto 0 0; height: 180px; background: linear-gradient(transparent, var(--navy)); pointer-events: none; }
+    .hero-content { position: relative; z-index: 2; width: min(610px, 52%); }
+    .kicker { display: inline-flex; align-items: center; gap: 9px; color: var(--accent-soft); font-size: 12px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .kicker::before { content: ""; width: 30px; height: 1px; background: currentColor; }
+    .hero h1 { max-width: 640px; margin: 18px 0 0; font-size: clamp(44px, 5.1vw, 72px); line-height: .98; letter-spacing: -.055em; }
+    .hero h1 .soft { display: block; margin-top: 10px; color: #c2b9ef; font-size: .73em; line-height: 1.08; }
+    .hero-lead { max-width: 565px; margin: 25px 0 0; color: #c1cad8; font-size: 17px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 30px; }
+    .hero-waitlist { max-width: 570px; margin-top: 27px; }
+    .hero-waitlist-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 9px; padding: 6px; border: 1px solid rgba(202,168,235,.22); border-radius: 18px; background: rgba(5,13,31,.76); box-shadow: 0 18px 45px rgba(0,0,0,.22); backdrop-filter: blur(14px); }
+    .hero-waitlist input { min-width: 0; min-height: 48px; padding: 0 14px; border: 0; outline: 0; color: #fff; background: transparent; }
+    .hero-waitlist input::placeholder { color: #8390a5; }
+    .hero-waitlist .button { min-height: 48px; }
+    .hero-waitlist .form-note { margin-left: 7px; }
+    .hero-actions.secondary { margin-top: 11px; }
+    .hero-note { display: flex; align-items: center; gap: 11px; margin-top: 18px; color: #98a5b7; font-size: 11px; }
+    .hero-note::before { content: "✓"; display: grid; place-items: center; width: 21px; height: 21px; border: 1px solid rgba(103,207,154,.32); border-radius: 50%; color: var(--green); background: rgba(103,207,154,.08); }
+    .word-chip {
       position: absolute;
       z-index: 3;
-      width: 310px;
-      transform-origin: 50% 90%;
-      filter: brightness(.56) contrast(1.22) saturate(.9) hue-rotate(215deg) drop-shadow(0 28px 34px rgba(0,0,0,.62));
+      left: 47%;
+      top: 24%;
+      padding: 10px 15px;
+      border: 1px solid rgba(181,175,232,.25);
+      border-radius: 14px;
+      color: #eeeaff;
+      background: rgba(8, 23, 42, .72);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+      font-size: 19px;
+      transform: rotate(-3deg);
     }
-    .phone.front { left: 14%; top: -19px; transform: rotate(-5deg); }
-    .phone.back { right: -1%; top: 33px; transform: rotate(5deg) scale(.93); opacity: .9; }
-    .phone-glow { position: absolute; z-index: 2; left: 22%; right: 3%; bottom: 5%; height: 150px; border-radius: 50%; background: rgba(105, 43, 172, .35); filter: blur(46px); }
-    .lantern { position: absolute; right: -3%; bottom: 4%; z-index: 5; width: 78px; height: 145px; border: 3px solid #9f5d38; border-radius: 20px 20px 13px 13px; background: radial-gradient(ellipse at 50% 70%, #ffd37b, #c66a22 22%, #3d1c2f 58%, #151025 70%); box-shadow: 0 0 50px rgba(255, 146, 55, .48); transform: rotate(-4deg); }
-    .lantern::before { content: ""; position: absolute; left: 17px; right: 17px; top: -26px; height: 23px; border: 3px solid #9f5d38; border-radius: 20px 20px 4px 4px; }
-    .lantern::after { content: "✦"; position: absolute; inset: 22px 0 auto; color: #d39055; text-align: center; font-size: 31px; text-shadow: 0 40px 0 #d39055; }
-    .skyline { position: absolute; z-index: 1; left: -5%; right: -8%; bottom: 0; height: 118px; opacity: .55; background: linear-gradient(180deg, transparent, #090716 72%); }
-    .skyline i { position: absolute; bottom: 0; width: 36px; background: #0b081b; border-radius: 15px 15px 0 0; box-shadow: 0 -12px 0 -8px #0b081b; }
-    .skyline i::before { content: ""; position: absolute; left: 50%; bottom: 100%; width: 5px; height: 48px; background: #0b081b; transform: translateX(-50%); }
-    .skyline i:nth-child(1) { left: 1%; height: 46px; }
-    .skyline i:nth-child(2) { left: 29%; height: 70px; width: 55px; }
-    .skyline i:nth-child(3) { right: 30%; height: 52px; }
-    .skyline i:nth-child(4) { right: 4%; height: 82px; width: 49px; }
+    .word-chip small { display: block; color: #9ba8bb; direction: ltr; font: 600 8px Manrope, sans-serif; text-transform: uppercase; letter-spacing: .1em; }
 
-    .glass-panel { border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(145deg, rgba(19,22,49,.92), rgba(11,14,35,.86)); box-shadow: var(--shadow), inset 0 1px rgba(255,255,255,.025); }
-    .pain-panel { padding: 21px 20px 19px; }
-    .pain-panel h2 { margin-bottom: 16px; font: 600 21px/1.2 "Playfair Display", Georgia, serif; }
-    .pain-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-    .pain-card { display: grid; grid-template-columns: auto 1fr; gap: 12px; min-height: 102px; padding: 16px; border: 1px solid rgba(143,102,199,.1); border-radius: 13px; background: rgba(20, 23, 52, .72); }
-    .pain-card .mini-icon { width: 43px; height: 43px; margin: 0; }
-    .pain-card strong { font-size: 12px; }
-    .pain-card strong::after { content: " ×"; color: var(--danger); }
-    .pain-card p { margin-top: 5px; color: #9e9caf; font-size: 10px; line-height: 1.45; }
+    .proof-strip { position: relative; z-index: 4; margin-top: -54px; }
+    .proof-panel { display: grid; grid-template-columns: 1.15fr repeat(4, 1fr); border: 1px solid var(--line); border-radius: 24px; overflow: hidden; background: rgba(8, 27, 46, .9); box-shadow: var(--shadow); backdrop-filter: blur(20px); }
+    .proof-intro, .proof-item { min-height: 108px; padding: 22px; }
+    .proof-intro { display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, rgba(143,130,216,.18), rgba(18,43,67,.35)); }
+    .proof-intro strong { font-size: 16px; }
+    .proof-intro span { margin-top: 5px; color: var(--muted); font-size: 11px; }
+    .proof-item { display: grid; align-content: center; border-left: 1px solid var(--line); }
+    .proof-item b { color: var(--accent-soft); font-size: 23px; line-height: 1; }
+    .proof-item span { margin-top: 8px; color: #c3cad6; font-size: 11px; }
 
-    .approach-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-    .approach-card { overflow: hidden; min-height: 314px; border: 1px solid var(--line); border-radius: 15px; background: linear-gradient(160deg, #12152f, #0d1027); }
-    .approach-card .media { position: relative; height: 176px; overflow: hidden; background: radial-gradient(circle at 50% 70%, rgba(124,65,184,.36), transparent 58%), #0a0b20; }
-    .approach-card .media img { width: 100%; height: 100%; object-fit: cover; opacity: .77; filter: brightness(.7) saturate(.76) hue-rotate(225deg); transition: transform .5s, filter .5s; }
-    .approach-card:first-child .media img { object-fit: contain; transform: scale(1.12) translateY(26%); }
-    .approach-card:hover .media img { transform: scale(1.06); filter: brightness(.85) saturate(.9) hue-rotate(220deg); }
-    .approach-card:first-child:hover .media img { transform: scale(1.18) translateY(25%); }
-    .approach-card .body { padding: 17px; }
-    .approach-card h3 { font-size: 15px; }
-    .approach-card p { margin-top: 8px; color: #a9a7b8; font-size: 12px; }
+    .trust-section { padding: 42px 0 12px; }
+    .trust-panel { display: grid; grid-template-columns: 1.25fr repeat(3, 1fr); gap: 1px; overflow: hidden; border: 1px solid var(--line); border-radius: 24px; background: var(--line); box-shadow: 0 22px 55px rgba(0,0,0,.18); }
+    .trust-intro, .trust-point { min-height: 142px; padding: 24px; background: rgba(8,18,42,.96); }
+    .trust-intro { background: linear-gradient(145deg, rgba(70,39,119,.86), rgba(12,21,47,.98)); }
+    .trust-intro strong { display: block; font-size: 18px; }
+    .trust-intro p { margin: 7px 0 0; color: #c3bbd0; font-size: 11px; }
+    .trust-point b { display: grid; place-items: center; width: 36px; height: 36px; color: #e2c2ff; border: 1px solid rgba(197,154,238,.25); border-radius: 12px; background: rgba(162,100,223,.14); }
+    .trust-point strong { display: block; margin-top: 12px; font-size: 12px; }
+    .trust-point span { display: block; margin-top: 4px; color: var(--muted-2); font-size: 9px; }
 
-    .roadmap { overflow: hidden; padding-top: 16px; }
-    .roadmap-line { position: absolute; left: 4%; right: 4%; top: 34px; height: 1px; background: linear-gradient(90deg, transparent, #7d51b9 8%, #7d51b9 92%, transparent); }
-    .roadmap-line::after { content: ""; position: absolute; inset: -2px 0 auto; height: 5px; background: repeating-linear-gradient(90deg, transparent 0 28px, #ab6cef 28px 32px); opacity: .42; }
-    .levels { position: relative; display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
-    .level { position: relative; z-index: 1; text-align: center; }
-    .level-badge { display: grid; place-items: center; width: 58px; height: 58px; margin: 0 auto 14px; border: 1px solid #8e58cf; border-radius: 50%; background: linear-gradient(135deg, #503074, #201c45); box-shadow: 0 0 24px rgba(142,85,206,.22); font-size: 20px; font-weight: 700; }
-    .level:nth-child(2) .level-badge, .level:nth-child(5) .level-badge { background: linear-gradient(135deg, #245b60, #142a37); border-color: #4caaa0; }
-    .level:nth-child(3) .level-badge, .level:nth-child(6) .level-badge { background: linear-gradient(135deg, #744425, #332033); border-color: #b87942; }
-    .level h3 { font-size: 13px; }
-    .level p { margin-top: 7px; color: #9795a7; font-size: 9px; line-height: 1.45; }
+    .product-tour { padding-top: 80px; }
+    .screen-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: start; }
+    .screen-card { position: relative; overflow: hidden; padding: 9px; border: 1px solid var(--line); border-radius: 30px; background: linear-gradient(160deg, rgba(20,30,67,.96), rgba(6,14,31,.98)); box-shadow: var(--shadow); transition: transform .25s, border-color .25s; }
+    .screen-card:hover { transform: translateY(-7px); border-color: var(--line-strong); }
+    .real-screen-frame { position: relative; overflow: hidden; border: 1px solid rgba(214,193,240,.17); border-radius: 23px; background: #061625; }
+    .real-screen-frame::after { content: ""; position: absolute; inset: 0; pointer-events: none; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(255,255,255,.035); }
+    .real-screen-frame img { display: block; width: 100%; height: auto; }
+    .screen-copy { position: relative; z-index: 2; padding: 17px 13px 15px; }
+    .screen-copy span { color: var(--accent-soft); font-size: 9px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .screen-copy h3 { margin: 7px 0 0; font-size: 18px; }
+    .screen-copy p { margin: 6px 0 0; color: var(--muted); font-size: 10px; }
 
-    .articles-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; margin-bottom: 17px; }
-    .articles-head .section-title { margin: 0; }
-    .articles-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
-    .article-card { overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: #0f122b; transition: transform .25s, border-color .25s; }
-    .article-card:hover { transform: translateY(-5px); border-color: var(--line-bright); }
-    .article-card img { width: 100%; height: 145px; object-fit: cover; filter: brightness(.6) saturate(.72) sepia(.18); }
-    .article-body { padding: 12px 13px 15px; }
-    .tag { display: inline-flex; padding: 2px 6px; color: #d8a5ff; border-radius: 5px; background: rgba(146,73,215,.23); font-size: 8px; }
-    .article-body h3 { margin-top: 8px; font-size: 12px; line-height: 1.4; }
-    .article-meta { color: #858397; font-size: 9px; }
+    .section { position: relative; padding: 104px 0; }
+    .section-compact { padding-block: 74px; }
+    .section-head { max-width: 720px; margin-bottom: 44px; }
+    .section-head.center { margin-inline: auto; text-align: center; }
+    .section-head h2 { margin: 13px 0 0; font-size: clamp(32px, 4vw, 50px); line-height: 1.1; letter-spacing: -.045em; }
+    .section-head p { margin: 17px 0 0; color: var(--muted); }
 
-    .book-panel { display: grid; grid-template-columns: 230px 1fr 335px; align-items: center; gap: 28px; min-height: 230px; padding: 22px 24px; }
-    .book-cover { align-self: end; height: 260px; margin: -48px auto -22px; object-fit: contain; filter: brightness(.44) saturate(.75) hue-rotate(218deg) drop-shadow(0 18px 20px rgba(0,0,0,.5)); }
-    .book-copy h2 { font: 600 22px/1.2 "Playfair Display", Georgia, serif; }
-    .book-copy > p { margin-top: 9px; color: #aaa8ba; font-size: 12px; }
-    .book-benefits { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-top: 20px; }
-    .book-benefit { font-size: 9px; color: #c5c0cf; }
-    .book-benefit b { display: block; margin-bottom: 3px; color: var(--gold); font-size: 17px; }
-    .bonus { padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: radial-gradient(circle at 100% 100%, rgba(115,57,170,.18), transparent 57%), rgba(14,16,39,.7); }
-    .bonus strong { display: block; font: 600 18px/1.3 "Playfair Display", Georgia, serif; }
-    .bonus p { margin-top: 14px; color: #c2bdcb; font-size: 11px; }
-    .bonus p::before { content: "✦"; margin-right: 9px; color: #d06efa; }
+    .lesson-grid { display: grid; grid-template-columns: .86fr 1.14fr; align-items: stretch; gap: 22px; }
+    .lesson-copy { padding: 34px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: linear-gradient(155deg, rgba(14,43,68,.88), rgba(7,24,42,.9)); }
+    .lesson-copy h3 { margin: 0; font-size: 28px; line-height: 1.15; letter-spacing: -.035em; }
+    .lesson-copy > p { color: var(--muted); }
+    .feature-list { display: grid; gap: 10px; margin-top: 26px; }
+    .feature-line { display: grid; grid-template-columns: 39px 1fr; gap: 13px; align-items: center; padding: 12px; border: 1px solid transparent; border-radius: 14px; transition: background .2s, border-color .2s; }
+    .feature-line:hover { border-color: var(--line); background: rgba(143,130,216,.07); }
+    .feature-icon { display: grid; place-items: center; width: 39px; height: 39px; border-radius: 12px; color: #d8d2ff; background: rgba(143,130,216,.16); font-size: 17px; }
+    .feature-line strong { display: block; font-size: 13px; }
+    .feature-line small { display: block; margin-top: 2px; color: var(--muted-2); font-size: 10px; }
 
-    .compare-title { margin-bottom: 10px; text-align: center; font: 600 22px/1.2 "Playfair Display", Georgia, serif; }
-    .compare { overflow: hidden; }
-    .compare-row { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid rgba(138,105,180,.13); }
-    .compare-row:first-child { border-top: 0; background: rgba(31,31,68,.55); }
-    .compare-cell { display: flex; align-items: center; justify-content: space-between; min-height: 37px; padding: 0 70px; color: #aaa8ba; font-size: 11px; }
-    .compare-cell + .compare-cell { border-left: 1px solid var(--line); color: #e8e3ef; }
-    .compare-head { justify-content: center; color: #aaa8ba; font: 600 14px "Playfair Display", Georgia, serif; }
-    .compare-head.brand-head { color: #fff; }
-    .bad { color: #ef7587; }
-    .good { display: grid; place-items: center; width: 18px; height: 18px; color: #8be4c8; border-radius: 50%; background: rgba(69,170,147,.12); }
+    .lesson-app-shot { position: relative; min-height: 650px; display: grid; place-items: center; overflow: hidden; padding: 34px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: radial-gradient(circle at 50% 35%, rgba(127,83,221,.2), transparent 19rem), linear-gradient(160deg, rgba(9,19,44,.96), rgba(5,10,25,.98)); box-shadow: var(--shadow); }
+    .lesson-app-shot::before { content: "درس"; position: absolute; right: -18px; bottom: -70px; color: rgba(197,154,238,.055); font: 700 170px "IBM Plex Sans Arabic", sans-serif; }
+    .lesson-shot-frame { position: relative; z-index: 2; width: min(330px, 100%); padding: 9px; border: 1px solid rgba(216,199,239,.24); border-radius: 34px; background: linear-gradient(145deg, #1a2447, #030711); box-shadow: 0 35px 75px rgba(0,0,0,.48); transform: rotate(2deg); }
+    .lesson-shot-frame img { display: block; width: 100%; height: auto; border-radius: 25px; }
+    .lesson-shot-note { position: absolute; z-index: 3; left: 26px; bottom: 42px; max-width: 180px; padding: 13px 15px; border: 1px solid rgba(197,154,238,.25); border-radius: 15px; color: #d9d5e5; background: rgba(7,16,37,.9); box-shadow: var(--shadow); font-size: 9px; backdrop-filter: blur(14px); }
+    .lesson-shot-note b { display: block; margin-bottom: 4px; color: var(--accent-soft); font-size: 12px; }
 
-    .audience-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
-    .audience-card { position: relative; overflow: hidden; height: 164px; border: 1px solid var(--line); border-radius: 15px; background: #11132c; }
-    .audience-card img { width: 100%; height: 100%; object-fit: cover; filter: brightness(.7) saturate(.72) hue-rotate(220deg); }
-    .audience-card::after { content: ""; position: absolute; inset: 42% 0 0; background: linear-gradient(transparent, rgba(5,7,22,.96)); }
-    .audience-card p { position: absolute; z-index: 1; left: 10px; right: 10px; bottom: 11px; text-align: center; font-size: 11px; line-height: 1.3; }
+    .loop-section { overflow: hidden; background: linear-gradient(180deg, rgba(8,28,47,.15), rgba(11,35,58,.52), rgba(8,28,47,.08)); border-block: 1px solid rgba(158,178,212,.08); }
+    .loop-layout { display: grid; grid-template-columns: .95fr 1.05fr; gap: 70px; align-items: center; }
+    .loop-visual { position: relative; min-height: 760px; display: grid; place-items: center; }
+    .flow-viewer { width: min(440px, 100%); display: grid; justify-items: center; }
+    .flow-phone { position: relative; width: min(292px, 72vw); padding: 9px; border: 1px solid rgba(204,190,235,.25); border-radius: 35px; background: linear-gradient(145deg, #1c2743, #03070d 55%, #172138); box-shadow: 0 35px 90px rgba(0,0,0,.52), inset 0 0 0 1px rgba(255,255,255,.04); }
+    .flow-phone img { display: block; width: 100%; height: auto; border-radius: 26px; }
+    .flow-caption { width: min(410px, 100%); min-height: 60px; margin-top: 15px; text-align: center; }
+    .flow-caption b { display: block; color: #f1edfa; font-size: 14px; }
+    .flow-caption span { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; }
+    .flow-tabs { width: min(430px, 100%); display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-top: 13px; }
+    .flow-tab { min-height: 46px; padding: 8px 11px; border: 1px solid var(--line); border-radius: 13px; color: #aeb7c8; background: rgba(8,25,45,.72); text-align: left; font: 700 9px Manrope, sans-serif; cursor: pointer; transition: color .2s, border-color .2s, background .2s; }
+    .flow-tab span { display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: 6px; border-radius: 7px; color: #d9c8eb; background: rgba(162,100,223,.14); }
+    .flow-tab:hover, .flow-tab.active { color: #fff; border-color: rgba(197,154,238,.42); background: rgba(116,66,197,.2); }
+    .flow-tab:focus-visible { outline: 2px solid var(--accent-soft); outline-offset: 2px; }
 
-    .final-cta { padding: 14px 0 0; }
-    .cta-panel { position: relative; overflow: hidden; display: grid; grid-template-columns: 1fr 1.1fr; align-items: center; gap: 30px; padding: 22px 34px; border: 1px solid rgba(194,121,255,.36); border-radius: 15px; background: linear-gradient(105deg, #39206c, #61289d 48%, #32145f); box-shadow: 0 14px 48px rgba(86,37,145,.25); }
-    .cta-panel::after { content: "✦ ✦"; position: absolute; right: -12px; bottom: -30px; color: rgba(225,170,255,.22); font-size: 90px; transform: rotate(-16deg); }
-    .cta-panel h2 { font: 600 22px "Playfair Display", Georgia, serif; }
-    .cta-panel p { margin-top: 3px; color: #ded2ea; font-size: 11px; }
-    .cta-panel .wait-form { z-index: 1; margin: 0; max-width: none; }
-    .cta-panel .wait-form input { color: #1a1830; background: #f4eff8; border-color: transparent; }
-    .cta-panel .wait-form input::placeholder { color: #777083; }
+    .loop-copy h2 { margin: 15px 0 0; font-size: clamp(34px, 4vw, 50px); line-height: 1.08; letter-spacing: -.045em; }
+    .loop-copy > p { color: var(--muted); }
+    .steps { position: relative; display: grid; gap: 0; margin-top: 28px; }
+    .step { display: grid; grid-template-columns: 42px 1fr; gap: 15px; min-height: 74px; }
+    .step-mark { position: relative; display: grid; place-items: start center; padding-top: 5px; }
+    .step-mark::after { content: ""; position: absolute; top: 33px; bottom: -5px; width: 1px; background: linear-gradient(var(--accent), rgba(143,130,216,.08)); }
+    .step:last-child .step-mark::after { display: none; }
+    .step-mark b { position: relative; z-index: 1; display: grid; place-items: center; width: 29px; height: 29px; border: 1px solid rgba(181,175,232,.38); border-radius: 50%; color: #eeeaff; background: #182a50; font-size: 10px; }
+    .step-copy strong { font-size: 14px; }
+    .step-copy p { margin: 3px 0 0; color: var(--muted-2); font-size: 11px; }
 
-    footer { padding: 15px 0 24px; color: #69677e; font-size: 10px; }
-    .footer-in { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
-    footer .brand span { color: #dcd5e5; font-size: 17px; }
-    footer .brand img { width: 17px; height: 21px; }
-    .footer-links, .social-links { display: flex; align-items: center; gap: 36px; }
-    .social-links { gap: 9px; }
-    .social-links a { display: grid; place-items: center; width: 29px; height: 29px; color: #ded7e8; border: 1px solid var(--line); border-radius: 50%; font-size: 10px; }
+    .review-layout { display: grid; grid-template-columns: 1.02fr .98fr; gap: 24px; }
+    .review-copy, .review-app-shot { border: 1px solid var(--line); border-radius: var(--radius-lg); }
+    .review-copy { padding: 42px; background: linear-gradient(145deg, rgba(30,43,91,.72), rgba(8,29,49,.9)); }
+    .review-copy h2 { max-width: 560px; margin: 14px 0 0; font-size: clamp(33px, 4vw, 50px); line-height: 1.08; letter-spacing: -.045em; }
+    .review-copy > p { color: var(--muted); }
+    .review-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; margin-top: 30px; }
+    .review-stat { padding: 15px; border: 1px solid rgba(181,175,232,.12); border-radius: 16px; background: rgba(7,22,39,.35); }
+    .review-stat b { display: block; color: var(--accent-soft); font-size: 19px; }
+    .review-stat span { color: #9ca7b7; font-size: 9px; }
+    .review-app-shot { position: relative; overflow: hidden; min-height: 640px; padding: 30px; display: grid; place-items: center; background: radial-gradient(circle at 50% 35%, rgba(143,130,216,.3), transparent 18rem), #081b2f; }
+    .review-app-shot::before { content: "مراجعة"; position: absolute; right: -12px; bottom: -40px; color: rgba(181,175,232,.05); font: 700 120px "IBM Plex Sans Arabic", sans-serif; transform: rotate(-7deg); }
+    .review-shot-frame { position: relative; z-index: 2; width: min(292px, 100%); padding: 9px; border: 1px solid rgba(204,190,235,.24); border-radius: 35px; background: linear-gradient(145deg, #1c2743, #03070d); box-shadow: 0 32px 75px rgba(0,0,0,.48); }
+    .review-shot-frame img { display: block; width: 100%; height: auto; border-radius: 26px; }
 
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s, transform .65s; }
+    .pdf-section { overflow: hidden; background: linear-gradient(180deg, rgba(10,20,46,.1), rgba(54,32,91,.38), rgba(10,20,46,.08)); border-block: 1px solid rgba(190,121,246,.08); }
+    .pdf-layout { display: grid; grid-template-columns: .92fr 1.08fr; align-items: center; gap: 66px; }
+    .pdf-copy h2 { margin: 14px 0 0; font-size: clamp(34px, 4vw, 50px); line-height: 1.08; letter-spacing: -.045em; }
+    .pdf-copy > p { color: var(--muted); }
+    .pdf-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 21px; }
+    .pdf-pill { padding: 7px 10px; color: #dacbea; border: 1px solid rgba(197,154,238,.22); border-radius: 999px; background: rgba(91,48,135,.16); font-size: 9px; }
+    .pdf-note { margin-top: 18px; padding: 14px 16px; border-left: 3px solid var(--orange); border-radius: 0 13px 13px 0; color: #bfc5d0; background: rgba(217,149,79,.07); font-size: 10px; }
+    .pdf-visual { position: relative; min-height: 520px; display: grid; place-items: center; }
+    .pdf-glow { position: absolute; inset: 22% 10% 8%; border-radius: 50%; background: rgba(148,78,211,.28); filter: blur(55px); }
+    .pdf-pages { position: relative; z-index: 2; width: min(490px, 100%); min-height: 360px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; border: 8px solid #241b32; border-radius: 9px 22px 22px 9px; color: #27202c; background: #f2e9dc; box-shadow: 0 32px 75px rgba(0,0,0,.48); transform: rotate(-3deg); }
+    .pdf-page { position: relative; padding: 27px 24px; background: linear-gradient(90deg, #eadfce, #fbf5eb 8% 94%, #e3d5c2); }
+    .pdf-page + .pdf-page { border-left: 1px solid #d8c8b5; }
+    .pdf-page small { color: #8d725c; font-size: 7px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .pdf-page h3 { margin: 8px 0 0; font-size: 16px; line-height: 1.2; }
+    .pdf-lesson-image { width: 100%; height: 120px; margin-top: 14px; padding: 7px; object-fit: contain; border-radius: 12px; background: #eee5d9; }
+    .pdf-vocab { display: grid; gap: 7px; margin-top: 14px; }
+    .pdf-vocab span { display: flex; justify-content: space-between; gap: 9px; padding-bottom: 6px; border-bottom: 1px solid #ddcfc0; font-size: 8px; }
+    .pdf-vocab b { font-family: "IBM Plex Sans Arabic", sans-serif; font-size: 13px; }
+    .pdf-exercise { margin-top: 15px; padding: 12px; border: 1px solid #d8c3ad; border-radius: 10px; background: #f7eee2; }
+    .pdf-exercise strong { display: block; font-size: 9px; }
+    .pdf-exercise p { margin: 5px 0 0; color: #7b6857; font-size: 7px; line-height: 1.5; }
+    .pdf-badge { position: absolute; z-index: 3; right: 1%; top: 10%; padding: 12px 15px; border: 1px solid rgba(213,178,242,.3); border-radius: 15px; color: #eee4f8; background: rgba(13,16,39,.92); box-shadow: var(--shadow); font-size: 9px; transform: rotate(5deg); }
+    .pdf-badge b { display: block; color: var(--accent-soft); font-size: 15px; }
+
+    .curriculum { overflow: hidden; background: linear-gradient(180deg, rgba(13,39,64,.06), rgba(13,39,64,.46), rgba(13,39,64,.06)); }
+    .module-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
+    .module-card { position: relative; min-height: 188px; padding: 22px; overflow: hidden; border: 1px solid var(--line); border-radius: 21px; background: linear-gradient(145deg, rgba(13,42,66,.85), rgba(7,24,42,.92)); transition: transform .23s, border-color .23s; }
+    .module-card:hover { transform: translateY(-5px); border-color: var(--line-strong); }
+    .module-card::after { content: attr(data-ar); position: absolute; right: 14px; bottom: -15px; color: rgba(181,175,232,.055); font: 700 62px "IBM Plex Sans Arabic", sans-serif; }
+    .module-card.optional { background: linear-gradient(145deg, rgba(51,38,98,.72), rgba(13,31,56,.92)); }
+    .module-number { display: inline-flex; align-items: center; gap: 7px; color: var(--accent-soft); font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .module-number::before { content: ""; width: 16px; height: 1px; background: currentColor; }
+    .module-card h3 { position: relative; z-index: 1; margin: 15px 0 0; font-size: 17px; }
+    .module-card p { position: relative; z-index: 1; margin: 8px 0 0; color: var(--muted); font-size: 10px; }
+    .module-meta { position: absolute; z-index: 2; left: 22px; bottom: 18px; color: #7f8da1; font-size: 9px; }
+    .module-card.is-collapsed { display: none; }
+    .program-actions { display: flex; justify-content: center; margin-top: 24px; }
+
+    .audience-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 13px; }
+    .audience-card { position: relative; min-height: 235px; padding: 24px 20px; overflow: hidden; border: 1px solid var(--line); border-radius: 23px; background: linear-gradient(155deg, rgba(22,31,66,.9), rgba(7,16,36,.96)); transition: transform .23s, border-color .23s; }
+    .audience-card:hover { transform: translateY(-5px); border-color: var(--line-strong); }
+    .audience-card::after { content: attr(data-ar); position: absolute; right: 8px; bottom: -25px; color: rgba(197,154,238,.06); font: 700 76px "IBM Plex Sans Arabic", sans-serif; }
+    .audience-icon { position: relative; z-index: 1; display: grid; place-items: center; width: 48px; height: 48px; color: #e1c5fb; border: 1px solid rgba(197,154,238,.25); border-radius: 15px; background: rgba(162,100,223,.14); font-size: 22px; }
+    .audience-card h3 { position: relative; z-index: 1; margin: 21px 0 0; font-size: 15px; line-height: 1.25; }
+    .audience-card p { position: relative; z-index: 1; margin: 9px 0 0; color: var(--muted); font-size: 10px; }
+
+    .guides-layout { display: grid; grid-template-columns: 1fr .9fr; align-items: center; gap: 70px; }
+    .guides-copy h2 { margin: 14px 0 0; font-size: clamp(34px, 4vw, 50px); line-height: 1.08; letter-spacing: -.045em; }
+    .guides-copy > p { color: var(--muted); }
+    .quote { margin-top: 26px; padding: 19px 21px; border-left: 3px solid var(--accent); border-radius: 0 16px 16px 0; color: #d2d8e2; background: rgba(143,130,216,.08); font-size: 13px; }
+    .guide-points { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 22px; }
+    .guide-point { display: flex; align-items: center; gap: 9px; color: #adb8c7; font-size: 11px; }
+    .guide-point::before { content: "✓"; color: var(--green); }
+    .guides-visual { position: relative; min-height: 560px; }
+    .guide-halo { position: absolute; inset: 12% 5% 2%; border-radius: 50%; background: radial-gradient(circle, rgba(84,108,171,.36), rgba(70,61,135,.12) 48%, transparent 70%); filter: blur(2px); }
+    .guide-person { position: absolute; bottom: 0; height: 92%; object-fit: contain; object-position: bottom; filter: drop-shadow(0 25px 25px rgba(0,0,0,.32)); }
+    .guide-ayham { left: -3%; }
+    .guide-anna { right: -4%; height: 85%; }
+    .guide-label { position: absolute; z-index: 3; padding: 10px 13px; border: 1px solid var(--line); border-radius: 14px; background: rgba(7,25,43,.88); box-shadow: var(--shadow); backdrop-filter: blur(10px); }
+    .guide-label b { display: block; font-size: 12px; }
+    .guide-label span { color: var(--muted); font-size: 8px; }
+    .label-ayham { left: 3%; top: 12%; }
+    .label-anna { right: 3%; top: 27%; }
+
+    .motivation-panel { display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center; padding: 40px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: linear-gradient(135deg, rgba(44,39,99,.82), rgba(13,39,64,.9)); box-shadow: var(--shadow); }
+    .motivation-copy h2 { margin: 0; font-size: clamp(29px, 3.5vw, 43px); line-height: 1.1; letter-spacing: -.04em; }
+    .motivation-copy p { max-width: 650px; margin: 12px 0 0; color: #bbc4d2; }
+    .badges { display: flex; align-items: center; }
+    .badge-art { width: 112px; height: 112px; margin-left: -18px; padding: 5px; object-fit: contain; border-radius: 50%; background: rgba(8,26,45,.55); box-shadow: 0 16px 35px rgba(0,0,0,.25); }
+    .badge-art:first-child { margin-left: 0; }
+
+    .faq-layout { display: grid; grid-template-columns: .68fr 1.32fr; gap: 70px; align-items: start; }
+    .faq-title { position: sticky; top: 110px; }
+    .faq-title h2 { margin: 13px 0 0; font-size: clamp(34px, 4vw, 49px); line-height: 1.08; letter-spacing: -.045em; }
+    .faq-title p { color: var(--muted); }
+    .faq-list { display: grid; gap: 10px; }
+    .faq-item { border: 1px solid var(--line); border-radius: 18px; background: rgba(9,31,52,.68); }
+    .faq-item[open] { border-color: rgba(181,175,232,.32); background: rgba(15,42,67,.88); }
+    .faq-item summary { position: relative; padding: 20px 54px 20px 20px; list-style: none; cursor: pointer; font-size: 13px; font-weight: 700; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; position: absolute; top: 50%; right: 18px; width: 27px; height: 27px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 9px; color: var(--accent-soft); transform: translateY(-50%); transition: transform .2s; }
+    .faq-item[open] summary::after { transform: translateY(-50%) rotate(45deg); }
+    .faq-item p { margin: 0; padding: 0 20px 20px; color: var(--muted); font-size: 12px; }
+
+    .final-cta { padding: 30px 0 90px; }
+    .cta-card { position: relative; isolation: isolate; overflow: hidden; min-height: 420px; display: grid; grid-template-columns: 1fr .9fr; align-items: center; gap: 60px; padding: 54px; border: 1px solid rgba(181,175,232,.3); border-radius: 38px; background: linear-gradient(100deg, rgba(8,25,44,.96), rgba(12,31,56,.72) 58%, rgba(27,23,69,.52)), url("img/unit-night.jpg") center / cover no-repeat; box-shadow: var(--shadow); }
+    .cta-card::after { content: "لسان"; position: absolute; z-index: -1; right: 3%; bottom: -25px; color: rgba(255,255,255,.045); font: 700 140px "IBM Plex Sans Arabic", sans-serif; }
+    .cta-card h2 { margin: 14px 0 0; font-size: clamp(34px, 4.2vw, 54px); line-height: 1.06; letter-spacing: -.05em; }
+    .cta-card p { color: #bdc6d4; }
+    .waitlist { padding: 25px; border: 1px solid rgba(255,255,255,.13); border-radius: 23px; background: rgba(5,19,34,.62); backdrop-filter: blur(14px); }
+    .waitlist label { display: block; color: #dce1eb; font-size: 11px; font-weight: 700; }
+    .waitlist-row { display: flex; gap: 9px; margin-top: 10px; }
+    .waitlist input { min-width: 0; flex: 1; min-height: 50px; padding: 0 15px; border: 1px solid rgba(197,205,225,.2); border-radius: 14px; outline: none; color: #fff; background: rgba(8,25,43,.88); }
+    .waitlist input:focus { border-color: var(--accent-soft); box-shadow: 0 0 0 3px rgba(143,130,216,.12); }
+    .waitlist input::placeholder { color: #7f8c9e; }
+    .form-note { min-height: 20px; margin: 9px 0 0; color: #8794a8; font-size: 9px; }
+    .form-note.success { color: #9be1bc; }
+    .form-note.error { color: #ff9ca5; }
+    .consent { display: flex; align-items: flex-start; gap: 8px; margin-top: 10px; color: #8290a4; font-size: 8px; line-height: 1.45; }
+    .consent input { flex: none; min-height: 0; margin-top: 2px; accent-color: var(--accent); }
+    .consent a { color: #bbaee6; text-decoration: underline; text-underline-offset: 2px; }
+
+    footer { border-top: 1px solid var(--line); background: rgba(4,16,29,.56); }
+    .footer { min-height: 128px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .footer-copy { color: #748196; font-size: 9px; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 23px; color: #9ca8b8; font-size: 10px; }
+
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
     .reveal.in { opacity: 1; transform: none; }
 
-    @media (max-width: 1050px) {
-      .hero { min-height: auto; }
-      .hero-grid { grid-template-columns: 1fr 1fr; }
-      .hero-art { min-height: 500px; }
-      .phone { width: 285px; }
-      .phone.front { left: 2%; }
-      .phone.back { right: -20%; }
-      .pain-grid, .approach-grid, .articles-grid { grid-template-columns: repeat(2, 1fr); }
-      .book-panel { grid-template-columns: 190px 1fr; }
-      .book-cover { grid-row: span 2; }
-      .bonus { grid-column: 2; }
-      .compare-cell { padding-inline: 30px; }
+    @media (max-width: 1060px) {
+      .hero { min-height: 700px; background-position: 56% center; }
+      .hero-content { width: 55%; }
+      .word-chip { display: none; }
+      .proof-panel { grid-template-columns: repeat(4, 1fr); }
+      .proof-intro { grid-column: 1 / -1; min-height: 72px; text-align: center; }
+      .proof-item:nth-child(2) { border-left: 0; }
+      .lesson-grid, .review-layout { grid-template-columns: 1fr; }
+      .lesson-app-shot { width: min(620px, 100%); min-height: 690px; margin-inline: auto; }
+      .loop-layout { gap: 30px; }
+      .module-grid { grid-template-columns: repeat(3, 1fr); }
+      .trust-panel { grid-template-columns: repeat(3, 1fr); }
+      .trust-intro { grid-column: 1 / -1; min-height: 92px; }
+      .screen-grid { grid-template-columns: repeat(2, 1fr); width: min(800px, 100%); margin-inline: auto; gap: 18px; }
+      .pdf-layout { gap: 30px; }
+      .audience-grid { grid-template-columns: repeat(3, 1fr); }
+      .guides-layout { gap: 25px; }
     }
 
     @media (max-width: 820px) {
       .wrap { width: min(100% - 32px, var(--wrap)); }
-      .nav-links { display: none; position: absolute; top: 66px; left: 16px; right: 16px; padding: 18px; flex-direction: column; align-items: flex-start; gap: 18px; border: 1px solid var(--line); border-radius: 14px; background: rgba(9,11,29,.98); box-shadow: var(--shadow); }
+      .nav { min-height: 68px; }
+      .site-header { top: 0; }
+      .site-header.stuck { top: 0; }
+      .nav-links { display: none; position: absolute; top: 68px; left: 16px; right: 16px; margin: 0; padding: 18px; flex-direction: column; align-items: stretch; gap: 4px; border: 1px solid var(--line); border-radius: 18px; background: rgba(5,20,35,.98); box-shadow: var(--shadow); }
       .nav-links.open { display: flex; }
-      .menu-btn { display: block; }
-      .nav-cta { margin-left: auto; }
-      .hero { padding-top: 112px; }
-      .hero-grid { grid-template-columns: 1fr; }
-      .hero-copy { text-align: center; }
-      .hero h1, .hero-lead, .wait-form { margin-inline: auto; }
-      .proof { justify-content: center; }
-      .hero-features { margin-inline: auto; }
-      .hero-art { min-height: 510px; max-width: 620px; width: 100%; margin: 0 auto; }
-      .phone.front { left: 14%; }
-      .phone.back { right: 8%; }
-      .lantern { right: 2%; }
-      .levels { grid-template-columns: repeat(3, 1fr); row-gap: 35px; }
-      .roadmap-line { display: none; }
-      .audience-grid { grid-template-columns: repeat(3, 1fr); }
-      .cta-panel { grid-template-columns: 1fr; text-align: center; }
-      .cta-panel .wait-form { width: 100%; }
-      .footer-in { flex-wrap: wrap; }
+      .nav-links a { padding: 11px 8px; }
+      .menu-button { display: block; margin-left: auto; }
+      .nav-actions .button { display: none; }
+      .hero { min-height: 680px; align-items: flex-start; padding: 94px 0 245px; background: linear-gradient(180deg, rgba(4,9,24,.99) 0 49%, rgba(4,9,24,.48) 64%, var(--navy) 100%), url("img/lisan-night-hero-mobile.webp") 65% 100% / auto 420px no-repeat; }
+      .hero-content { width: 100%; text-align: center; }
+      .kicker { justify-content: center; }
+      .hero-lead { margin-inline: auto; }
+      .hero-actions, .hero-note { justify-content: center; }
+      .hero-waitlist { margin-inline: auto; }
+      .proof-strip { margin-top: 0; padding-top: 18px; }
+      .proof-panel { grid-template-columns: repeat(2, 1fr); }
+      .proof-item:nth-child(4) { border-left: 0; border-top: 1px solid var(--line); }
+      .proof-item:nth-child(5) { border-top: 1px solid var(--line); }
+      .section { padding: 64px 0; }
+      .section-compact { padding-block: 52px; }
+      .product-tour { padding-top: 60px; }
+      .screen-grid { grid-template-columns: repeat(2, 1fr); width: min(700px, 100%); }
+      .loop-layout, .pdf-layout, .guides-layout, .faq-layout { grid-template-columns: 1fr; }
+      .loop-copy { order: -1; }
+      .pdf-copy { order: -1; }
+      .loop-visual { min-height: 0; }
+      .pdf-visual { min-height: 480px; }
+      .module-grid { grid-template-columns: repeat(2, 1fr); }
+      .guides-visual { min-height: 510px; }
+      .motivation-panel { grid-template-columns: 1fr; text-align: center; }
+      .badges { justify-content: center; }
+      .faq-title { position: static; }
+      .cta-card { grid-template-columns: 1fr; gap: 30px; padding: 38px; }
+      .footer { flex-wrap: wrap; padding-block: 30px; }
     }
 
     @media (max-width: 580px) {
-      .section { padding: 36px 0; }
-      .nav-cta { display: none; }
-      .nav-in { height: 66px; }
-      .hero h1 { font-size: 38px; }
-      .hero-lead { font-size: 14px; }
-      .wait-form { flex-direction: column; }
-      .wait-form .btn { width: 100%; }
-      .hero-features { grid-template-columns: repeat(2, 1fr); text-align: left; }
-      .hero-art { min-height: 420px; }
-      .phone { width: 225px; }
-      .phone.front { left: 0; top: 0; }
-      .phone.back { right: -4%; top: 28px; }
-      .moon { width: 90px; }
-      .lantern { width: 56px; height: 105px; }
-      .pain-grid, .approach-grid, .articles-grid, .levels, .audience-grid { grid-template-columns: 1fr; }
-      .approach-card { min-height: 0; }
-      .levels { gap: 28px; }
-      .level p { max-width: 240px; margin-inline: auto; font-size: 10px; }
-      .articles-head { align-items: flex-start; flex-direction: column; }
-      .book-panel { grid-template-columns: 1fr; text-align: center; }
-      .book-cover { grid-row: auto; height: 225px; margin-top: -40px; }
-      .book-benefits { grid-template-columns: repeat(2, 1fr); }
-      .bonus { grid-column: auto; }
-      .compare-row { grid-template-columns: 1fr; }
-      .compare-cell { min-height: 44px; padding-inline: 16px; }
-      .compare-cell + .compare-cell { border-left: 0; border-top: 1px dashed var(--line); }
-      .compare-row:first-child .compare-cell:first-child { display: none; }
-      .audience-card { height: 200px; }
-      .cta-panel { padding: 22px 18px; }
-      .footer-in { justify-content: center; text-align: center; }
-      .footer-links { width: 100%; justify-content: center; gap: 16px; }
+      body { font-size: 14px; }
+      .site-header { top: 0; }
+      .nav { min-height: 62px; }
+      .brand-copy small { display: none; }
+      .hero { min-height: auto; padding: 86px 0 205px; background-position: 64% 100%; background-size: auto 335px; }
+      .hero h1 { margin-top: 13px; font-size: 36px; line-height: 1.02; }
+      .hero h1 .soft { margin-top: 7px; }
+      .hero-lead { margin-top: 17px; font-size: 14px; line-height: 1.6; }
+      .hero-waitlist { margin-top: 19px; }
+      .hero-waitlist-row { grid-template-columns: 1fr; padding: 8px; }
+      .hero-waitlist .button { width: 100%; }
+      .hero-actions.secondary { display: none; }
+      .hero-note { margin-top: 9px; font-size: 10px; }
+      .consent { font-size: 10px; }
+      .section { padding: 54px 0; }
+      .section-compact { padding-block: 44px; }
+      .proof-strip { padding-top: 12px; }
+      .proof-panel { grid-template-columns: repeat(2, 1fr); }
+      .proof-intro { grid-column: 1 / -1; min-height: 88px; padding: 18px; }
+      .proof-item { min-height: 96px; padding: 17px; border-top: 1px solid var(--line); border-left: 0; }
+      .proof-item:nth-child(3), .proof-item:nth-child(5) { border-left: 1px solid var(--line); }
+      .proof-item b { font-size: 20px; }
+      .proof-item span { margin-top: 6px; font-size: 11px; line-height: 1.4; }
+      .trust-section { padding-top: 28px; }
+      .trust-panel { grid-template-columns: repeat(2, 1fr); }
+      .trust-intro { grid-column: 1 / -1; min-height: 98px; padding: 20px; }
+      .trust-point { min-height: 142px; padding: 18px; }
+      .trust-point:last-child { grid-column: 1 / -1; min-height: 112px; }
+      .trust-point strong { font-size: 13px; }
+      .trust-point span { font-size: 12px; line-height: 1.45; }
+      .section-head { margin-bottom: 30px; }
+      .section-head h2 { font-size: 32px; line-height: 1.12; }
+      .section-head p { margin-top: 13px; font-size: 14px; line-height: 1.65; }
+      .lesson-copy, .review-copy { padding: 25px; }
+      .screen-grid { width: calc(100% + 16px); display: flex; gap: 12px; overflow-x: auto; margin-right: -16px; padding: 4px 16px 16px 0; scroll-snap-type: x mandatory; scrollbar-width: none; }
+      .screen-grid::-webkit-scrollbar, .audience-grid::-webkit-scrollbar, .module-grid::-webkit-scrollbar, .flow-tabs::-webkit-scrollbar { display: none; }
+      .screen-card { flex: 0 0 min(84vw, 330px); scroll-snap-align: start; }
+      .screen-card:hover { transform: none; }
+      .screen-copy span { font-size: 10px; }
+      .screen-copy h3 { font-size: 18px; }
+      .screen-copy p { font-size: 13px; line-height: 1.55; }
+      .swipe-hint { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 9px 0 0; color: #8f9aad; font-size: 11px; }
+      .swipe-hint::before, .swipe-hint::after { content: ""; width: 24px; height: 1px; background: rgba(197,154,238,.25); }
+      .lesson-app-shot { min-height: 0; display: block; padding: 14px; }
+      .lesson-shot-frame { width: min(290px, 100%); transform: none; }
+      .lesson-shot-note { position: relative; left: auto; right: auto; bottom: auto; max-width: none; margin-top: 12px; padding: 14px; font-size: 12px; line-height: 1.5; }
+      .feature-line strong { font-size: 14px; }
+      .feature-line small { font-size: 12px; line-height: 1.45; }
+      .loop-visual { min-height: 0; margin-top: 26px; }
+      .flow-phone { width: min(270px, 78vw); }
+      .flow-caption { min-height: 72px; }
+      .flow-caption b { font-size: 15px; }
+      .flow-caption span { font-size: 13px; line-height: 1.5; }
+      .flow-tabs { width: calc(100% + 16px); display: flex; gap: 7px; overflow-x: auto; margin-right: -16px; padding-right: 16px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+      .flow-tab { flex: 0 0 142px; min-height: 48px; scroll-snap-align: start; font-size: 10px; }
+      .review-stats { grid-template-columns: 1fr; }
+      .review-stat span { font-size: 12px; }
+      .review-app-shot { min-height: 0; padding: 16px; }
+      .review-shot-frame { width: min(265px, 100%); }
+      .pdf-visual { min-height: 420px; }
+      .pdf-pages { width: min(310px, 100%); min-height: 360px; grid-template-columns: 1fr; border-width: 5px; transform: rotate(-1deg); }
+      .pdf-page { padding: 24px 20px; }
+      .pdf-page + .pdf-page { display: none; }
+      .pdf-page h3 { font-size: 20px; }
+      .pdf-lesson-image { height: 150px; }
+      .pdf-vocab span { font-size: 10px; }
+      .pdf-badge { right: -5px; top: 2%; }
+      .pdf-copy > p, .pdf-note { font-size: 13px; line-height: 1.6; }
+      .module-grid { width: calc(100% + 16px); display: flex; gap: 11px; overflow-x: auto; margin-right: -16px; padding: 4px 16px 16px 0; scroll-snap-type: x mandatory; scrollbar-width: none; }
+      .module-card { flex: 0 0 min(82vw, 320px); min-height: 176px; scroll-snap-align: start; }
+      .module-card p { font-size: 13px; line-height: 1.5; }
+      .module-meta { font-size: 11px; }
+      .guides-visual { min-height: 370px; }
+      .guide-person { height: 84%; }
+      .guide-anna { height: 78%; }
+      .guide-label { display: none; }
+      .guide-points { grid-template-columns: 1fr; }
+      .audience-grid { width: calc(100% + 16px); display: flex; gap: 11px; overflow-x: auto; margin-right: -16px; padding: 4px 16px 16px 0; scroll-snap-type: x mandatory; scrollbar-width: none; }
+      .audience-card { flex: 0 0 min(82vw, 310px); min-height: 170px; padding: 20px; scroll-snap-align: start; }
+      .audience-card h3 { margin-top: 16px; font-size: 17px; }
+      .audience-card p { font-size: 13px; line-height: 1.5; }
+      .motivation-panel { padding: 28px 20px; }
+      .badge-art { width: 86px; height: 86px; }
+      .final-cta { padding: 18px 0 70px; }
+      .cta-card { min-height: 0; padding: 28px 20px; border-radius: 28px; }
+      .waitlist { padding: 18px; }
+      .waitlist-row { flex-direction: column; }
+      .waitlist .button { width: 100%; }
+      .footer { justify-content: center; text-align: center; }
+      .footer-links { width: 100%; justify-content: center; }
+      .mobile-sticky-cta { position: fixed; z-index: 45; left: 16px; right: 16px; bottom: calc(12px + env(safe-area-inset-bottom)); min-height: 52px; display: grid; place-items: center; padding: 0 18px; border: 1px solid rgba(255,255,255,.16); border-radius: 16px; color: #fff; background: linear-gradient(135deg, rgba(166,133,237,.97), rgba(105,75,203,.97)); box-shadow: 0 18px 45px rgba(4,7,20,.55); font-size: 14px; font-weight: 800; opacity: 0; pointer-events: none; transform: translateY(85px); transition: opacity .25s, transform .25s; }
+      .mobile-sticky-cta.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -393,224 +564,463 @@
       *, *::before, *::after { animation: none !important; transition: none !important; }
       .reveal { opacity: 1; transform: none; }
     }
+
   </style>
 </head>
 <body>
-  <header class="topbar" id="topbar">
-    <div class="wrap nav-in">
+
+  <header class="site-header" id="siteHeader">
+    <div class="wrap nav">
       <a class="brand" href="#top" aria-label="Lisan — на главную">
-        <img src="img/logo-mark.svg" alt="">
-        <span>Lisan</span>
+        <img src="img/brand-mark.png" alt="">
+        <span class="brand-copy"><strong>Lisan</strong><small>Путь к арабскому языку</small></span>
       </a>
       <nav class="nav-links" id="navLinks" aria-label="Основная навигация">
-        <a href="#about">О приложении</a>
-        <a href="#method">Как это работает</a>
-        <a href="#roadmap">Методика</a>
-        <a href="#articles">Статьи</a>
+        <a href="#experience">Как проходит урок</a>
+        <a href="#materials">PDF-материалы</a>
+        <a href="#review">Повторение</a>
+        <a href="#program">Программа A1</a>
+        <a href="#audience">Для кого</a>
+        <a href="#faq">Вопросы</a>
       </nav>
-      <a class="btn btn-primary nav-cta" href="#waitlist">Получить ранний доступ</a>
-      <button class="menu-btn" id="menuBtn" type="button" aria-label="Открыть меню" aria-expanded="false"><i></i></button>
+      <div class="nav-actions">
+        <a class="button button-primary button-small" href="#early-access">Ранний доступ <span class="arrow">→</span></a>
+      </div>
+      <button class="menu-button" id="menuButton" type="button" aria-label="Открыть меню" aria-expanded="false"><span></span></button>
     </div>
   </header>
 
   <main id="top">
-    <section class="hero" id="about">
-      <div class="wrap hero-grid">
-        <div class="hero-copy reveal">
-          <h1>Учите арабский<br>на русском.<span>Понимайте язык,<br>а не просто запоминайте слова.</span></h1>
-          <p class="hero-lead">Lisan — приложение для русскоговорящих, которое помогает понимать арабский через контекст, культуру и живую практику.</p>
-          <form class="wait-form js-wait-form" novalidate>
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="wrap">
+        <div class="hero-content reveal">
+          <span class="kicker">Арабский для русскоговорящих</span>
+          <h1 id="heroTitle">Понимайте арабский — <span class="soft">от первых букв до уровня A1.</span></h1>
+          <p class="hero-lead">Короткие уроки на русском, шесть форматов практики, умное повторение и расширенный PDF к каждому уроку — в одном последовательном маршруте.</p>
+          <form class="hero-waitlist js-waitlist" id="heroWaitlistForm" novalidate>
             <label class="sr-only" for="heroEmail">Ваш e-mail</label>
-            <input id="heroEmail" type="email" name="email" autocomplete="email" placeholder="Ваш e-mail" required>
-            <button class="btn btn-primary" type="submit">Получить ранний доступ</button>
+            <div class="hero-waitlist-row">
+              <input id="heroEmail" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Ваш e-mail" required>
+              <button class="button button-primary" type="submit">Получить ранний доступ <span class="arrow">→</span></button>
+            </div>
+            <p class="form-note" aria-live="polite">Без спама. Только приглашение на тестирование и важные обновления.</p>
+            <label class="consent"><input name="consent" type="checkbox" required><span>Согласен(на) на обработку e-mail для раннего доступа.</span></label>
           </form>
-          <div class="form-status" aria-live="polite"></div>
-          <div class="proof">
-            <span class="avatars" aria-hidden="true">
-              <img src="img/aud-traveller.jpg" alt=""><img src="img/aud-student.jpg" alt=""><img src="img/aud-selflearn.jpg" alt=""><img src="img/aud-culture.jpg" alt="">
-            </span>
-            <span>Уже <b>214 человек</b> ждут запуск ♡</span>
-          </div>
-          <div class="hero-features">
-            <div class="hero-feature"><span class="mini-icon">文</span><strong>На русском</strong><small>от новичка до свободного общения</small></div>
-            <div class="hero-feature"><span class="mini-icon">⌁</span><strong>Пошаговый путь</strong><small>с чёткой системой обучения</small></div>
-            <div class="hero-feature"><span class="mini-icon">◎</span><strong>Живая практика</strong><small>с самого первого урока</small></div>
-            <div class="hero-feature"><span class="mini-icon">✦</span><strong>Культура и язык</strong><small>вместе, а не по отдельности</small></div>
-          </div>
+          <div class="hero-actions secondary"><a class="button button-ghost" href="#product">Посмотреть приложение</a></div>
+          <div class="hero-note">Первый релиз: уровень A1 · интерфейс и объяснения на русском</div>
         </div>
+      </div>
+      <div class="word-chip arabic" aria-hidden="true"><small>Слово дня</small>أَهْلًا وَسَهْلًا</div>
+    </section>
 
-        <div class="hero-art reveal" aria-label="Приложение Lisan на смартфонах">
-          <span class="moon" aria-hidden="true"></span>
-          <span class="phone-glow" aria-hidden="true"></span>
-          <img class="phone back" src="img/phone.png" alt="Экран уроков Lisan">
-          <img class="phone front" src="img/phone.png" alt="Главный экран приложения Lisan">
-          <span class="lantern" aria-hidden="true"></span>
-          <span class="skyline" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        </div>
+    <section class="proof-strip" aria-label="Ключевые преимущества">
+      <div class="wrap proof-panel reveal">
+        <div class="proof-intro"><strong>Не набор карточек. Система обучения.</strong><span>Каждый элемент помогает пройти путь от знакомства со словом до уверенного использования.</span></div>
+        <div class="proof-item"><b>RU</b><span>Понятные объяснения на русском</span></div>
+        <div class="proof-item"><b>5–10</b><span>Коротких разнообразных шагов в уроке</span></div>
+        <div class="proof-item"><b>6</b><span>Разных форматов заданий, включая произношение</span></div>
+        <div class="proof-item"><b>0 → A1</b><span>Маршрут от алфавита к живым ситуациям</span></div>
       </div>
     </section>
 
-    <section class="section">
-      <div class="wrap glass-panel pain-panel reveal">
-        <h2>Почему большинство бросает учить арабский?</h2>
-        <div class="pain-grid">
-          <article class="pain-card"><span class="mini-icon">A</span><div><strong>Всё на английском</strong><p>Сложно понять объяснения и примеры.</p></div></article>
-          <article class="pain-card"><span class="mini-icon">✽</span><div><strong>Слова без контекста</strong><p>Трудно запомнить и использовать в жизни.</p></div></article>
-          <article class="pain-card"><span class="mini-icon">⌘</span><div><strong>Нет чёткого пути</strong><p>Непонятно, что учить и в каком порядке.</p></div></article>
-          <article class="pain-card"><span class="mini-icon">◴</span><div><strong>Скучно и однообразно</strong><p>Упражнения не дают живого контекста.</p></div></article>
-        </div>
+    <section class="trust-section" aria-label="Проверенные возможности Lisan">
+      <div class="wrap trust-panel reveal">
+        <div class="trust-intro"><strong>Не обещания на будущее — уже работающая система.</strong><p>Первый курс проходит раннюю проверку, а ключевые механики приложения уже реализованы.</p></div>
+        <div class="trust-point"><b>✓</b><strong>Путь A1 собран</strong><span>Уроки, проверки и итоговый экзамен уровня.</span></div>
+        <div class="trust-point"><b>PDF</b><strong>Материалы привязаны к урокам</strong><span>Расширенные конспекты и упражнения для Premium.</span></div>
+        <div class="trust-point"><b>↻</b><strong>Повторение работает офлайн</strong><span>После первой загрузки оценки сохраняются и синхронизируются.</span></div>
       </div>
     </section>
 
-    <section class="section" id="method">
+    <section class="section product-tour" id="product">
       <div class="wrap">
-        <h2 class="section-title center reveal">Lisan — другой подход</h2>
-        <div class="approach-grid">
-          <article class="approach-card reveal"><div class="media"><img src="img/phone.png" alt="Экран объяснения урока"></div><div class="body"><h3>Объяснения на русском</h3><p>Понятные правила, примеры и сравнения без языкового барьера.</p></div></article>
-          <article class="approach-card reveal"><div class="media"><img src="img/spread-1.jpg" alt="Урок о рынке и повседневной жизни"></div><div class="body"><h3>Контекст и культура</h3><p>Учите язык через жизнь, традиции и реальные ситуации.</p></div></article>
-          <article class="approach-card reveal"><div class="media"><img src="img/illo-headphones.png" alt="Практика произношения"></div><div class="body"><h3>Практика с первого дня</h3><p>Слушайте, говорите и сразу получайте обратную связь.</p></div></article>
-          <article class="approach-card reveal"><div class="media"><img src="img/spread-4.jpg" alt="Диалог на арабском языке"></div><div class="body"><h3>Путь, который работает</h3><p>Пошаговая методика ведёт к измеримому результату.</p></div></article>
+        <div class="section-head center reveal"><span class="kicker">Настоящие экраны приложения</span><h2>Вот как Lisan выглядит внутри</h2><p>Без концептов и условных макетов: путь обучения, уроки и статьи показаны на реальных экранах приложения.</p></div>
+        <div class="screen-grid">
+          <article class="screen-card reveal"><div class="real-screen-frame"><img src="img/screens/learning-path.webp" loading="lazy" decoding="async" alt="Экран пути изучения арабского языка в Lisan"></div><div class="screen-copy"><span>Путь обучения</span><h3>Весь прогресс перед глазами</h3><p>Уровень, блоки и количество завершённых уроков собраны в одном маршруте.</p></div></article>
+          <article class="screen-card reveal"><div class="real-screen-frame"><img src="img/screens/lesson-nodes.webp" loading="lazy" decoding="async" alt="Экран уроков блока с извилистым маршрутом"></div><div class="screen-copy"><span>Уроки блока</span><h3>Живой маршрут вместо списка</h3><p>Каждая тема получает собственную сцену, время прохождения и награду XP.</p></div></article>
+          <article class="screen-card reveal"><div class="real-screen-frame"><img src="img/screens/blog-home.webp" loading="lazy" decoding="async" alt="Главный экран статей в приложении Lisan"></div><div class="screen-copy"><span>Статьи</span><h3>Язык вместе с культурой</h3><p>Материалы о языке и арабском мире встроены прямо в приложение.</p></div></article>
+          <article class="screen-card reveal"><div class="real-screen-frame"><img src="img/screens/article.webp" loading="lazy" decoding="async" alt="Страница статьи об арабском алфавите"></div><div class="screen-copy"><span>Чтение</span><h3>Удобный формат без отвлечений</h3><p>Крупный текст, тематическая обложка и навигация между статьями.</p></div></article>
         </div>
+        <p class="swipe-hint">Листайте экраны в сторону</p>
       </div>
     </section>
 
-    <section class="section" id="roadmap">
+    <section class="section" id="experience">
       <div class="wrap">
-        <h2 class="section-title center reveal">Ваш путь в арабском языке</h2>
-        <div class="roadmap reveal">
-          <div class="roadmap-line"></div>
-          <div class="levels">
-            <article class="level"><span class="level-badge">A1</span><h3>Модуль 1<br>Первые шаги</h3><p>Алфавит, базовые слова и простые фразы.</p></article>
-            <article class="level"><span class="level-badge">A1</span><h3>Модуль 2<br>Повседневная жизнь</h3><p>Семья, профессии, время и дом.</p></article>
-            <article class="level"><span class="level-badge">A2</span><h3>Модуль 3<br>Общение</h3><p>Диалоги, путешествия, покупки, рестораны.</p></article>
-            <article class="level"><span class="level-badge">B1</span><h3>Модуль 4<br>Говорю уверенно</h3><p>Мнения, истории, новости и обсуждения.</p></article>
-            <article class="level"><span class="level-badge">B2</span><h3>Модуль 5<br>Понимаю глубже</h3><p>Культура, традиции, литература.</p></article>
-            <article class="level"><span class="level-badge">C1</span><h3>Модуль 6<br>Свободный арабский</h3><p>Свободное общение на любые темы.</p></article>
+        <div class="section-head reveal">
+          <span class="kicker">Учитесь через действие</span>
+          <h2>Каждый урок — маленькое путешествие</h2>
+          <p>Вместо однообразного повторения Lisan меняет формат: изображения, аудио, выбор, порядок слов, письмо и речь чередуются так, чтобы сохранять внимание и закреплять материал.</p>
+        </div>
+        <div class="lesson-grid">
+          <article class="lesson-copy reveal">
+            <h3>Сначала смысл.<br>Потом форма.</h3>
+            <p>Новые слова появляются в контексте, а сложность растёт постепенно. Ошибка — не тупик, а подсказка, что нужно повторить.</p>
+            <div class="feature-list">
+              <div class="feature-line"><span class="feature-icon">◉</span><div><strong>Визуальная опора</strong><small>Образ помогает понять слово до перевода.</small></div></div>
+              <div class="feature-line"><span class="feature-icon">♫</span><div><strong>Живое звучание</strong><small>Слушайте слово и пример, повторяйте в своём темпе.</small></div></div>
+              <div class="feature-line"><span class="feature-icon">↕</span><div><strong>Активное воспроизведение</strong><small>Собирайте фразы, пишите и отвечайте самостоятельно.</small></div></div>
+              <div class="feature-line"><span class="feature-icon">✓</span><div><strong>Понятная обратная связь</strong><small>Сразу видно, что получилось и что стоит повторить.</small></div></div>
+            </div>
+          </article>
+          <div class="lesson-app-shot reveal" aria-label="Настоящий экран урока Lisan">
+            <div class="lesson-shot-frame"><img src="img/screens/lesson-detail.webp" loading="lazy" decoding="async" alt="Страница урока о направлении и выходе из дома"></div>
+            <div class="lesson-shot-note"><b>Настоящий урок Lisan</b>Цель, содержание, длительность, уровень и награда видны до начала практики.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="articles">
-      <div class="wrap">
-        <div class="articles-head reveal"><h2 class="section-title">Интересные статьи о языке и культуре</h2><a class="btn btn-outline" href="#articles">Смотреть все статьи</a></div>
-        <div class="articles-grid">
-          <article class="article-card reveal"><img src="img/spread-1.jpg" alt="Арабский рынок"><div class="article-body"><span class="article-meta"><span class="tag">A1</span> · 5 мин</span><h3>5 слов на арабском, которые вы услышите каждый день</h3></div></article>
-          <article class="article-card reveal"><img src="img/spread-2.jpg" alt="Арабская грамматика"><div class="article-body"><span class="article-meta"><span class="tag">A2</span> · 7 мин</span><h3>Кофе по-арабски: традиции и гостеприимство</h3></div></article>
-          <article class="article-card reveal"><img src="img/spread-4.jpg" alt="Разговор на арабском"><div class="article-body"><span class="article-meta"><span class="tag">B1</span> · 6 мин</span><h3>Праздники в арабском мире: что и как отмечают</h3></div></article>
-          <article class="article-card reveal"><img src="img/spread-3.jpg" alt="Упражнения по арабскому"><div class="article-body"><span class="article-meta"><span class="tag">A2</span> · 6 мин</span><h3>10 выражений, которые помогут в путешествии</h3></div></article>
+    <section class="section pdf-section" id="materials">
+      <div class="wrap pdf-layout">
+        <div class="pdf-visual reveal" aria-label="Пример расширенного PDF к уроку">
+          <span class="pdf-glow" aria-hidden="true"></span>
+          <div class="pdf-pages">
+            <div class="pdf-page"><small>Lisan · Урок 3</small><h3>Откуда ты?</h3><img class="pdf-lesson-image" src="img/lesson-country.png" loading="lazy" decoding="async" alt="Разговор о стране"><div class="pdf-vocab"><span><b lang="ar" dir="rtl">مِنْ أَيْنَ</b>откуда</span><span><b lang="ar" dir="rtl">أَنَا مِنْ</b>я из…</span><span><b lang="ar" dir="rtl">بَلَد</b>страна</span></div></div>
+            <div class="pdf-page"><small>Конспект и практика</small><h3>Говорим о себе</h3><div class="pdf-exercise"><strong>Понятное объяснение</strong><p>Разбираем вопрос, порядок слов и варианты ответа на русском языке.</p></div><div class="pdf-exercise"><strong>Дополнительные примеры</strong><p>Фразы для знакомства, путешествия и первого разговора.</p></div><div class="pdf-exercise"><strong>Задания</strong><p>Заполните пропуски, соберите ответ и напишите свой вариант.</p></div></div>
+          </div>
+          <div class="pdf-badge"><b>PDF Premium</b>к каждому уроку</div>
         </div>
+        <article class="pdf-copy reveal">
+          <span class="kicker">Урок продолжается за пределами экрана</span>
+          <h2>Расширенный PDF к каждому уроку</h2>
+          <p>После интерактивного урока можно скачать отдельный материал: подробный конспект на русском, словарь, дополнительные примеры и упражнения. Каждый файл дополняет конкретный урок — вместе они постепенно формируют цельный учебник Lisan.</p>
+          <div class="pdf-pills"><span class="pdf-pill">Конспект на русском</span><span class="pdf-pill">Словарь урока</span><span class="pdf-pill">Примеры и диалоги</span><span class="pdf-pill">Дополнительные задания</span><span class="pdf-pill">Можно скачать</span></div>
+          <div class="pdf-note">PDF-материалы входят в Lisan Premium. Сам учебный путь в приложении остаётся доступным в соответствии с выбранным курсом.</div>
+        </article>
       </div>
     </section>
 
-    <section class="section">
-      <div class="wrap glass-panel book-panel reveal">
-        <img class="book-cover" src="img/book.png" alt="Учебник Lisan для русскоговорящих">
-        <div class="book-copy">
-          <h2>Методика, проверенная на практике</h2>
-          <p>Книга «Арабский с нуля» — основа методики Lisan. Более двух лет опыта преподавания и тысячи студентов по всему миру.</p>
-          <div class="book-benefits">
-            <span class="book-benefit"><b>▣</b>Пошаговая методика</span>
-            <span class="book-benefit"><b>◌</b>Понятные объяснения</span>
-            <span class="book-benefit"><b>☊</b>Практика с первого урока</span>
-            <span class="book-benefit"><b>✓</b>Реальные результаты</span>
+    <section class="section loop-section">
+      <div class="wrap loop-layout">
+        <div class="loop-visual reveal">
+          <div class="flow-viewer">
+            <div class="flow-phone" id="flowPanel" role="tabpanel" aria-live="polite"><img id="flowImage" src="img/screens/word-discovery.webp" loading="lazy" decoding="async" alt="Знакомство с новым арабским словом внутри урока"></div>
+            <div class="flow-caption"><b id="flowTitle">Слово, образ и звучание</b><span id="flowDescription">Сначала вы знакомитесь со словом, слушаете его и при необходимости открываете перевод.</span></div>
+            <div class="flow-tabs" role="tablist" aria-label="Этапы урока">
+              <button class="flow-tab active" type="button" role="tab" aria-selected="true" aria-controls="flowPanel" data-src="img/screens/word-discovery.webp" data-alt="Знакомство с новым арабским словом внутри урока" data-title="Слово, образ и звучание" data-description="Сначала вы знакомитесь со словом, слушаете его и при необходимости открываете перевод."><span>1</span>Знакомство</button>
+              <button class="flow-tab" type="button" role="tab" aria-selected="false" aria-controls="flowPanel" data-src="img/screens/word-order.webp" data-alt="Задание на правильный порядок арабских слов" data-title="Соберите фразу" data-description="Знакомые элементы нужно расположить в правильном порядке и восстановить смысл целиком."><span>2</span>Порядок слов</button>
+              <button class="flow-tab" type="button" role="tab" aria-selected="false" aria-controls="flowPanel" data-src="img/screens/arabic-writing.webp" data-alt="Задание на самостоятельное написание фразы по-арабски" data-title="Напишите по-арабски" data-description="Приложение проверяет каждый знак и помогает перейти от узнавания к самостоятельному ответу."><span>3</span>Письмо</button>
+              <button class="flow-tab" type="button" role="tab" aria-selected="false" aria-controls="flowPanel" data-src="img/screens/lesson-summary.webp" data-alt="Итог урока и быстрая проверка изученных слов" data-title="Итог и быстрая проверка" data-description="Перед тестом вы видите результат урока и можете отметить слова, которые стоит повторить."><span>4</span>Итог</button>
+            </div>
           </div>
         </div>
-        <aside class="bonus"><strong>Всё, что есть в книге — уже внутри приложения.</strong><p>PDF-версия в подарок для первых пользователей.</p></aside>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="wrap">
-        <h2 class="compare-title reveal">Чем Lisan отличается от других?</h2>
-        <div class="glass-panel compare reveal">
-          <div class="compare-row"><div class="compare-cell compare-head">Другие приложения</div><div class="compare-cell compare-head brand-head">Lisan</div></div>
-          <div class="compare-row"><div class="compare-cell">Интерфейс и объяснения на английском <span class="bad">×</span></div><div class="compare-cell">Всё на русском языке <span class="good">✓</span></div></div>
-          <div class="compare-row"><div class="compare-cell">Отдельные слова без контекста <span class="bad">×</span></div><div class="compare-cell">Слова и фразы в живых ситуациях <span class="good">✓</span></div></div>
-          <div class="compare-row"><div class="compare-cell">Нет культуры и реальных примеров <span class="bad">×</span></div><div class="compare-cell">Культура, традиции и жизнь <span class="good">✓</span></div></div>
-          <div class="compare-row"><div class="compare-cell">Нет чёткого пути обучения <span class="bad">×</span></div><div class="compare-cell">Путь от A1 до свободного уровня <span class="good">✓</span></div></div>
-          <div class="compare-row"><div class="compare-cell">Однообразные упражнения <span class="bad">×</span></div><div class="compare-cell">Увлекательные уроки и форматы <span class="good">✓</span></div></div>
+        <div class="loop-copy reveal">
+          <span class="kicker">Педагогика внутри</span>
+          <h2>Не угадывать.<br>Понимать и вспоминать.</h2>
+          <p>Lisan ведёт от лёгкого знакомства к самостоятельному ответу. Форматы чередуются, а варианты ответа опираются на уже знакомые слова — поэтому задача остаётся честной и полезной.</p>
+          <div class="steps">
+            <div class="step"><div class="step-mark"><b>1</b></div><div class="step-copy"><strong>Знакомство</strong><p>Слово, образ, звучание и понятный смысл.</p></div></div>
+            <div class="step"><div class="step-mark"><b>2</b></div><div class="step-copy"><strong>Узнавание</strong><p>Выбор подходящего варианта в контексте.</p></div></div>
+            <div class="step"><div class="step-mark"><b>3</b></div><div class="step-copy"><strong>Воспроизведение</strong><p>Порядок слов, письмо или самостоятельный ответ.</p></div></div>
+            <div class="step"><div class="step-mark"><b>4</b></div><div class="step-copy"><strong>Быстрый обзор</strong><p>Карточки перед проверкой помогают собрать всё вместе.</p></div></div>
+            <div class="step"><div class="step-mark"><b>5</b></div><div class="step-copy"><strong>Проверка и следующий шаг</strong><p>Результат, ошибки и понятный переход к новому уроку.</p></div></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="review">
+      <div class="wrap review-layout">
+        <article class="review-copy reveal">
+          <span class="kicker">Запоминание надолго</span>
+          <h2>Повторяйте не всё. Только то, что пора.</h2>
+          <p>Система интервальных повторений возвращает слова в нужный момент. Отдельно можно пролистать изученную лексику и ошибки из тестов — без повторного прохождения целого урока.</p>
+          <div class="review-stats">
+            <div class="review-stat"><b>2 режима</b><span>Изученные слова и ошибки тестов</span></div>
+            <div class="review-stat"><b>4 оценки</b><span>От «не помню» до «слишком легко»</span></div>
+            <div class="review-stat"><b>Offline</b><span>Ответы синхронизируются после возвращения сети</span></div>
+          </div>
+        </article>
+        <div class="review-app-shot reveal" aria-label="Настоящий экран быстрой проверки слов">
+          <div class="review-shot-frame"><img src="img/screens/quick-review.webp" loading="lazy" decoding="async" alt="Быстрая проверка слов и ошибок на главном экране Lisan"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section curriculum" id="program">
       <div class="wrap">
-        <h2 class="section-title center reveal">Для кого Lisan?</h2>
+        <div class="section-head center reveal">
+          <span class="kicker">Программа первого уровня</span>
+          <h2>От букв — к повседневному арабскому</h2>
+          <p>Уровень A1 разбит на понятные тематические блоки. Необязательный модуль алфавита всегда открыт, а основной путь постепенно добавляет лексику, грамматику и реальные ситуации.</p>
+        </div>
+        <div class="module-grid">
+          <article class="module-card optional reveal" data-ar="أبجد"><span class="module-number">Модуль 0 · всегда открыт</span><h3>Арабский алфавит</h3><p>Буквы, формы, звуки и первые шаги к чтению.</p><span class="module-meta">Необязательный старт</span></article>
+          <article class="module-card reveal" data-ar="بداية"><span class="module-number">Модуль 1</span><h3>Начало</h3><p>Приветствия, имя, страна, язык и знакомство.</p><span class="module-meta">Основа общения</span></article>
+          <article class="module-card reveal" data-ar="عالم"><span class="module-number">Модуль 2</span><h3>Мир вокруг меня</h3><p>Дом, семья, места, предметы и описание пространства.</p><span class="module-meta">Слова вокруг вас</span></article>
+          <article class="module-card reveal" data-ar="طريق"><span class="module-number">Модуль 3</span><h3>В пути</h3><p>Направления, транспорт и простые вопросы в дороге.</p><span class="module-meta">Практические ситуации</span></article>
+          <article class="module-card reveal is-collapsed" data-ar="يومي"><span class="module-number">Модуль 4</span><h3>Повседневная жизнь</h3><p>Распорядок, время, еда и привычные действия.</p><span class="module-meta">Каждый день</span></article>
+          <article class="module-card reveal is-collapsed" data-ar="دراسة"><span class="module-number">Модуль 5</span><h3>Учёба и работа</h3><p>Профессии, занятия, планы и общение в группе.</p><span class="module-meta">Учимся говорить о себе</span></article>
+          <article class="module-card reveal is-collapsed" data-ar="سفر"><span class="module-number">Модуль 6</span><h3>Путешествия и ситуации</h3><p>Покупки, кафе, гостиница и полезные диалоги.</p><span class="module-meta">Арабский в действии</span></article>
+          <article class="module-card reveal is-collapsed" data-ar="A1"><span class="module-number">Финал уровня</span><h3>Итоговая проверка</h3><p>Собираем навыки вместе и видим, что уже получается.</p><span class="module-meta">Ваш результат A1</span></article>
+        </div>
+        <p class="swipe-hint">Листайте модули в сторону</p>
+        <div class="program-actions reveal"><button class="button button-ghost" id="programToggle" type="button" aria-expanded="false">Показать всю программу</button></div>
+      </div>
+    </section>
+
+    <section class="section" id="audience">
+      <div class="wrap">
+        <div class="section-head center reveal"><span class="kicker">Найдите себя</span><h2>Для кого создан Lisan?</h2><p>Один понятный маршрут подходит разным целям — меняется контекст практики, но не качество объяснения.</p></div>
         <div class="audience-grid">
-          <article class="audience-card reveal"><img src="img/aud-selflearn.jpg" alt="Самостоятельная ученица"><p>Для начинающих<br>с нуля</p></article>
-          <article class="audience-card reveal"><img src="img/aud-traveller.jpg" alt="Путешественник"><p>Для путешествий<br>и переездов</p></article>
-          <article class="audience-card reveal"><img src="img/aud-student.jpg" alt="Студент"><p>Для учёбы<br>и работы</p></article>
-          <article class="audience-card reveal"><img src="img/aud-culture.jpg" alt="Читатель"><p>Для интереса<br>к культуре</p></article>
-          <article class="audience-card reveal"><img src="img/aud-expat.jpg" alt="Житель арабской страны"><p>Для всех, кто хочет<br>понимать арабский</p></article>
+          <article class="audience-card reveal" data-ar="بداية"><span class="audience-icon">0</span><h3>Начинающим с нуля</h3><p>Можно начать с алфавита или сразу с простых фраз и вернуться к буквам позже.</p></article>
+          <article class="audience-card reveal" data-ar="سفر"><span class="audience-icon">⌁</span><h3>Для путешествий</h3><p>Направления, кафе, гостиница, покупки и полезные бытовые диалоги.</p></article>
+          <article class="audience-card reveal" data-ar="دراسة"><span class="audience-icon">▣</span><h3>Для учёбы и работы</h3><p>Лексика о занятиях, профессиях, планах и общении в группе.</p></article>
+          <article class="audience-card reveal" data-ar="حياة"><span class="audience-icon">⌂</span><h3>Живущим в арабской среде</h3><p>Повседневные ситуации помогают быстрее понимать речь вокруг себя.</p></article>
+          <article class="audience-card reveal" data-ar="ثقافة"><span class="audience-icon">✦</span><h3>Интересующимся культурой</h3><p>Язык изучается через реальные сцены и уважительный культурный контекст.</p></article>
+        </div>
+        <p class="swipe-hint">Листайте карточки в сторону</p>
+      </div>
+    </section>
+
+    <section class="section" id="guides">
+      <div class="wrap guides-layout">
+        <article class="guides-copy reveal">
+          <span class="kicker">Не учитесь в одиночку</span>
+          <h2>Айхам объяснит.<br>Анна попробует вместе с вами.</h2>
+          <p>Персонажи помогают сохранить живой тон обучения: Айхам ведёт по материалу, а Анна проходит тот же путь начинающего ученика — задаёт вопросы, ошибается и двигается дальше.</p>
+          <div class="quote">«Ошибаться нормально. Важно понимать, почему ответ не сработал — и попробовать ещё раз.»</div>
+          <div class="guide-points">
+            <span class="guide-point">Дружелюбные подсказки</span>
+            <span class="guide-point">Поддержка после ошибки</span>
+            <span class="guide-point">Короткие объяснения</span>
+            <span class="guide-point">Живой контекст</span>
+          </div>
+        </article>
+        <div class="guides-visual reveal" aria-label="Персонажи Айхам и Анна">
+          <div class="guide-halo"></div>
+          <img class="guide-person guide-ayham" src="img/ayham-home.png" loading="lazy" decoding="async" alt="Айхам — наставник в приложении Lisan">
+          <img class="guide-person guide-anna" src="img/anna-welcome.png" loading="lazy" decoding="async" alt="Анна — начинающая ученица">
+          <span class="guide-label label-ayham"><b>Айхам</b><span>Наставник и проводник</span></span>
+          <span class="guide-label label-anna"><b>Анна</b><span>Учится вместе с вами</span></span>
         </div>
       </div>
     </section>
 
-    <section class="final-cta" id="waitlist">
-      <div class="wrap cta-panel reveal">
-        <div><h2>Будьте первыми!</h2><p>Оставьте e-mail и получите ранний доступ к приложению и полезные материалы об арабском языке.</p></div>
-        <form class="wait-form js-wait-form" novalidate>
-          <label class="sr-only" for="footerEmail">Ваш e-mail</label>
-          <input id="footerEmail" type="email" name="email" autocomplete="email" placeholder="Ваш e-mail" required>
-          <button class="btn btn-primary" type="submit">Получить ранний доступ</button>
+    <section class="section section-compact">
+      <div class="wrap motivation-panel reveal">
+        <div class="motivation-copy">
+          <h2>Прогресс, который хочется продолжать</h2>
+          <p>Цели на день, XP, серии занятий и достижения поддерживают привычку — но не заменяют обучение. Главная награда в Lisan: вы действительно вспоминаете и используете арабский.</p>
+        </div>
+        <div class="badges" aria-label="Примеры достижений">
+          <img class="badge-art" src="img/achievement-first.png" loading="lazy" decoding="async" alt="Достижение за первый урок">
+          <img class="badge-art" src="img/achievement-streak.png" loading="lazy" decoding="async" alt="Достижение за серию из семи дней">
+          <img class="badge-art" src="img/achievement-review.png" loading="lazy" decoding="async" alt="Достижение за сто повторений">
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="wrap faq-layout">
+        <div class="faq-title reveal">
+          <span class="kicker">Коротко о главном</span>
+          <h2>Частые вопросы</h2>
+          <p>Что именно изучаем, сколько времени занимает урок и можно ли начать без знания алфавита.</p>
+        </div>
+        <div class="faq-list reveal">
+          <details class="faq-item" open><summary>Подойдёт ли Lisan абсолютному новичку?</summary><p>Да. Основной путь начинается с простых фраз, а модуль алфавита открыт отдельно и доступен в любой момент. Можно сначала познакомиться с буквами или вернуться к ним позже.</p></details>
+          <details class="faq-item"><summary>Какой вариант арабского изучается?</summary><p>Основа курса — современный литературный арабский язык. Он создаёт понятную базу для чтения, обучения и дальнейшего знакомства с разговорными вариантами.</p></details>
+          <details class="faq-item"><summary>Сколько времени нужно заниматься?</summary><p>Уроки рассчитаны на короткие регулярные занятия. Лучше 10–15 минут несколько раз в неделю, чем один длинный марафон и большой перерыв.</p></details>
+          <details class="faq-item"><summary>Что происходит с моими ошибками?</summary><p>Ошибки тестов появляются в отдельном режиме быстрой проверки. Их можно пересмотреть вместе с изученными словами, не проходя урок заново.</p></details>
+          <details class="faq-item"><summary>Что входит в PDF к уроку?</summary><p>Расширенный конспект на русском, словарь, дополнительные примеры и упражнения. Файл привязан к конкретному уроку и доступен участникам Lisan Premium.</p></details>
+          <details class="faq-item"><summary>Можно ли заниматься без интернета?</summary><p>После первой загрузки можно повторять сохранённые слова офлайн: оценки останутся на устройстве и синхронизируются после возвращения сети. Загрузка уроков, PDF и отправка итоговых тестов требуют подключения.</p></details>
+          <details class="faq-item"><summary>Какие уровни доступны?</summary><p>Сейчас продукт сосредоточен на качественном уровне A1. Следующие уровни появятся после проверки методики и обратной связи от первых учеников.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" id="early-access">
+      <div class="wrap cta-card reveal">
+        <div>
+          <span class="kicker">Ранний доступ</span>
+          <h2>Начните свой путь к арабскому с Lisan.</h2>
+          <p>Оставьте адрес — и получите сообщение, когда откроется тестирование первого курса A1.</p>
+        </div>
+        <form class="waitlist js-waitlist" id="waitlistForm" novalidate>
+          <label for="email">Ваш e-mail</label>
+          <div class="waitlist-row">
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="name@example.com" required>
+            <button class="button button-primary" type="submit">Сообщить о запуске</button>
+          </div>
+          <p class="form-note" id="formNote" aria-live="polite">Без спама. Только запуск и важные обновления продукта.</p>
+          <label class="consent"><input name="consent" type="checkbox" required><span>Я согласен(на) на обработку адреса для приглашения в ранний доступ и принимаю <a href="#privacy">политику конфиденциальности</a>.</span></label>
         </form>
       </div>
     </section>
   </main>
 
-  <footer>
-    <div class="wrap footer-in">
-      <a class="brand" href="#top"><img src="img/logo-mark.svg" alt=""><span>Lisan</span></a>
-      <div class="footer-links"><a href="#">Политика конфиденциальности</a><a href="#">Условия использования</a></div>
-      <div class="social-links" aria-label="Социальные сети"><a href="#" aria-label="Telegram">T</a><a href="#" aria-label="Instagram">◎</a><a href="#" aria-label="ВКонтакте">VK</a></div>
+  <a class="mobile-sticky-cta" id="mobileStickyCta" href="#early-access">Получить ранний доступ →</a>
+
+  <footer id="privacy">
+    <div class="wrap footer">
+      <a class="brand" href="#top" aria-label="Lisan — наверх"><img src="img/brand-mark.png" alt=""><span class="brand-copy"><strong>Lisan</strong><small>Путь к арабскому языку</small></span></a>
+      <div class="footer-copy">© 2026 Lisan. Мобильное приложение для изучения арабского языка.</div>
+      <nav class="footer-links" aria-label="Ссылки в подвале"><a href="#program">Программа</a><a href="#materials">PDF</a><a href="#faq">FAQ</a><a href="#early-access">Ранний доступ</a></nav>
     </div>
   </footer>
 
   <script>
     (() => {
-      const header = document.getElementById('topbar');
-      const menuButton = document.getElementById('menuBtn');
+      const header = document.getElementById('siteHeader');
+      const menu = document.getElementById('menuButton');
       const nav = document.getElementById('navLinks');
+      const programToggle = document.getElementById('programToggle');
+      const mobileStickyCta = document.getElementById('mobileStickyCta');
+      const earlyAccess = document.getElementById('early-access');
+      const flowPanel = document.getElementById('flowPanel');
+      const flowImage = document.getElementById('flowImage');
+      const flowTitle = document.getElementById('flowTitle');
+      const flowDescription = document.getElementById('flowDescription');
+      const flowTabs = [...document.querySelectorAll('.flow-tab')];
+      const waitlistEndpoint = document.querySelector('meta[name="lisan-waitlist-endpoint"]')?.content.trim();
+      let flowTouchStartX = 0;
 
       const closeMenu = () => {
-        menuButton.classList.remove('open');
-        menuButton.setAttribute('aria-expanded', 'false');
-        menuButton.setAttribute('aria-label', 'Открыть меню');
         nav.classList.remove('open');
+        menu.classList.remove('open');
+        menu.setAttribute('aria-expanded', 'false');
+        menu.setAttribute('aria-label', 'Открыть меню');
       };
 
-      menuButton.addEventListener('click', () => {
+      menu.addEventListener('click', () => {
         const open = !nav.classList.contains('open');
         nav.classList.toggle('open', open);
-        menuButton.classList.toggle('open', open);
-        menuButton.setAttribute('aria-expanded', String(open));
-        menuButton.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
+        menu.classList.toggle('open', open);
+        menu.setAttribute('aria-expanded', String(open));
+        menu.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
       });
 
       nav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
       window.addEventListener('resize', () => { if (window.innerWidth > 820) closeMenu(); });
-      window.addEventListener('scroll', () => header.classList.toggle('stuck', window.scrollY > 24), { passive: true });
+      window.addEventListener('scroll', () => header.classList.toggle('stuck', window.scrollY > 48), { passive: true });
 
-      document.querySelectorAll('.js-wait-form').forEach(form => {
-        form.addEventListener('submit', event => {
-          event.preventDefault();
-          const input = form.querySelector('input[type="email"]');
-          const status = form.parentElement.querySelector('.form-status');
-          const valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(input.value.trim());
-          if (!valid) {
-            input.setAttribute('aria-invalid', 'true');
-            input.focus();
-            if (status) status.textContent = 'Пожалуйста, введите корректный e-mail.';
-            return;
-          }
-          input.removeAttribute('aria-invalid');
-          form.innerHTML = '<div style="color:#c9ffef;font-weight:700">Спасибо! Сообщим вам о запуске Lisan ✦</div>';
-          if (status) status.textContent = '';
+      const updateStickyCta = () => {
+        const formRect = earlyAccess.getBoundingClientRect();
+        const formVisible = formRect.top < window.innerHeight * .92 && formRect.bottom > 0;
+        const shouldShow = window.innerWidth <= 580 && window.scrollY > Math.min(520, window.innerHeight * .72) && !formVisible;
+        mobileStickyCta.classList.toggle('visible', shouldShow);
+      };
+      window.addEventListener('scroll', updateStickyCta, { passive: true });
+      window.addEventListener('resize', updateStickyCta);
+      updateStickyCta();
+
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('toggle', () => {
+          if (!item.open) return;
+          document.querySelectorAll('.faq-item').forEach(other => { if (other !== item) other.open = false; });
         });
       });
 
-      const reveal = document.querySelectorAll('.reveal');
+      const activateFlow = tab => {
+        flowTabs.forEach(other => {
+          const active = other === tab;
+          other.classList.toggle('active', active);
+          other.setAttribute('aria-selected', String(active));
+        });
+        flowImage.src = tab.dataset.src;
+        flowImage.alt = tab.dataset.alt;
+        flowTitle.textContent = tab.dataset.title;
+        flowDescription.textContent = tab.dataset.description;
+      };
+
+      flowTabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => activateFlow(tab));
+        tab.addEventListener('keydown', event => {
+          if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+          event.preventDefault();
+          const direction = event.key === 'ArrowRight' ? 1 : -1;
+          const next = flowTabs[(index + direction + flowTabs.length) % flowTabs.length];
+          next.focus();
+          next.click();
+        });
+      });
+
+      flowPanel.addEventListener('touchstart', event => {
+        flowTouchStartX = event.changedTouches[0].clientX;
+      }, { passive: true });
+      flowPanel.addEventListener('touchend', event => {
+        const distance = event.changedTouches[0].clientX - flowTouchStartX;
+        if (Math.abs(distance) < 48) return;
+        const current = flowTabs.findIndex(tab => tab.classList.contains('active'));
+        const direction = distance < 0 ? 1 : -1;
+        const next = flowTabs[(current + direction + flowTabs.length) % flowTabs.length];
+        activateFlow(next);
+        next.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }, { passive: true });
+
+      programToggle.addEventListener('click', () => {
+        const cards = document.querySelectorAll('.module-card.is-collapsed, .module-card.was-collapsed');
+        const expanded = programToggle.getAttribute('aria-expanded') === 'true';
+        cards.forEach(card => {
+          card.classList.toggle('is-collapsed', expanded);
+          card.classList.toggle('was-collapsed', !expanded);
+          if (!expanded) card.classList.add('in');
+        });
+        programToggle.setAttribute('aria-expanded', String(!expanded));
+        programToggle.textContent = expanded ? 'Показать всю программу' : 'Свернуть программу';
+      });
+
+      document.querySelectorAll('.js-waitlist').forEach(form => {
+        form.addEventListener('submit', async event => {
+          event.preventDefault();
+          const input = form.elements.email;
+          const consent = form.elements.consent;
+          const note = form.querySelector('.form-note');
+          const submit = form.querySelector('button[type="submit"]');
+          const email = input.value.trim().toLowerCase();
+          const valid = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+          note.className = 'form-note';
+
+          if (!valid) {
+            input.setAttribute('aria-invalid', 'true');
+            note.classList.add('error');
+            note.textContent = 'Проверьте адрес электронной почты.';
+            input.focus();
+            return;
+          }
+          if (!consent?.checked) {
+            note.classList.add('error');
+            note.textContent = 'Подтвердите согласие на обработку e-mail.';
+            consent?.focus();
+            return;
+          }
+
+          input.removeAttribute('aria-invalid');
+          form.setAttribute('aria-busy', 'true');
+          submit.disabled = true;
+          note.textContent = 'Сохраняем адрес…';
+
+          try {
+            if (waitlistEndpoint) {
+              const response = await fetch(waitlistEndpoint, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, source: form.id || 'landing-page' })
+              });
+              if (!response.ok && response.status !== 409) throw new Error('waitlist_request_failed');
+              note.classList.add('success');
+              note.textContent = response.status === 409 ? 'Этот адрес уже есть в списке раннего доступа.' : 'Готово! Сообщим вам, когда откроется тестирование.';
+            } else {
+              const saved = JSON.parse(localStorage.getItem('lisan-waitlist-local') || '[]');
+              const alreadySaved = saved.includes(email);
+              if (!alreadySaved) saved.push(email);
+              localStorage.setItem('lisan-waitlist-local', JSON.stringify(saved));
+              note.classList.add('success');
+              note.textContent = alreadySaved ? 'Этот адрес уже сохранён в локальной версии.' : 'Адрес сохранён в локальной версии. Перед запуском будет подключена защищённая отправка.';
+            }
+          } catch {
+            note.classList.add('error');
+            note.textContent = 'Не удалось сохранить адрес. Попробуйте ещё раз.';
+          } finally {
+            form.removeAttribute('aria-busy');
+            submit.disabled = false;
+          }
+        });
+      });
+
+      const revealItems = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
         const observer = new IntersectionObserver(entries => {
           entries.forEach(entry => {
@@ -619,10 +1029,10 @@
               observer.unobserve(entry.target);
             }
           });
-        }, { threshold: .08, rootMargin: '0px 0px -30px' });
-        reveal.forEach(element => observer.observe(element));
+        }, { threshold: .08, rootMargin: '0px 0px -28px' });
+        revealItems.forEach(item => observer.observe(item));
       } else {
-        reveal.forEach(element => element.classList.add('in'));
+        revealItems.forEach(item => item.classList.add('in'));
       }
     })();
   </script>
