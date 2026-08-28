@@ -323,25 +323,27 @@
 
     .curriculum { overflow: hidden; background: linear-gradient(180deg, rgba(13,39,64,.06), rgba(13,39,64,.46), rgba(13,39,64,.06)); }
     .module-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 13px; }
-    .module-card { position: relative; min-height: 188px; padding: 22px; overflow: hidden; border: 1px solid var(--line); border-radius: 21px; background: linear-gradient(145deg, rgba(13,42,66,.85), rgba(7,24,42,.92)); transition: transform .23s, border-color .23s; }
-    .module-card:hover { transform: translateY(-5px); border-color: var(--line-strong); }
-    .module-card::after { content: attr(data-ar); position: absolute; right: 14px; bottom: -15px; color: rgba(181,175,232,.055); font: 700 62px "IBM Plex Sans Arabic", sans-serif; }
-    .module-card.optional { background: linear-gradient(145deg, rgba(51,38,98,.72), rgba(13,31,56,.92)); }
-    .module-number { display: inline-flex; align-items: center; gap: 7px; color: var(--accent-soft); font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .module-card { position: relative; isolation: isolate; min-height: 228px; display: grid; align-content: end; padding: 22px 22px 47px; overflow: hidden; border: 1px solid rgba(181,175,232,.28); border-radius: 21px; background-color: #07182a; background-image: linear-gradient(180deg, rgba(4,12,26,.03) 0%, rgba(4,12,26,.12) 38%, rgba(4,12,26,.86) 77%, rgba(4,12,26,.98) 100%), var(--card-bg); background-position: center, var(--card-pos, center); background-size: cover, cover; background-repeat: no-repeat; box-shadow: 0 18px 42px rgba(0,0,0,.24); transition: transform .23s, border-color .23s, box-shadow .23s; }
+    .module-card:hover { transform: translateY(-5px); border-color: rgba(197,154,238,.58); box-shadow: 0 23px 52px rgba(0,0,0,.34); }
+    .module-card::before { content: ""; position: absolute; z-index: 0; inset: 0; pointer-events: none; border-radius: inherit; box-shadow: inset 0 1px rgba(255,255,255,.12); }
+    .module-card::after { display: none; }
+    .module-card.optional { border-color: rgba(172,130,236,.48); }
+    .module-number { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 7px; color: #dbc6ff; font-size: 9px; font-weight: 800; letter-spacing: .12em; text-shadow: 0 2px 12px rgba(0,0,0,.9); text-transform: uppercase; }
     .module-number::before { content: ""; width: 16px; height: 1px; background: currentColor; }
-    .module-card h3 { position: relative; z-index: 1; margin: 15px 0 0; font-size: 17px; }
-    .module-card p { position: relative; z-index: 1; margin: 8px 0 0; color: var(--muted); font-size: 10px; }
-    .module-meta { position: absolute; z-index: 2; left: 22px; bottom: 18px; color: #7f8da1; font-size: 9px; }
+    .module-card h3 { position: relative; z-index: 1; margin: 10px 0 0; font-size: 17px; text-shadow: 0 3px 16px rgba(0,0,0,.95); }
+    .module-card p { position: relative; z-index: 1; margin: 7px 0 0; color: #d9dfe9; font-size: 10px; text-shadow: 0 2px 12px rgba(0,0,0,.95); }
+    .module-meta { position: absolute; z-index: 2; left: 22px; bottom: 18px; color: #b7c1cf; font-size: 9px; text-shadow: 0 2px 10px rgba(0,0,0,.95); }
     .module-card.is-collapsed { display: none; }
     .program-actions { display: flex; justify-content: center; margin-top: 24px; }
 
     .audience-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 13px; }
-    .audience-card { position: relative; min-height: 235px; padding: 24px 20px; overflow: hidden; border: 1px solid var(--line); border-radius: 23px; background: linear-gradient(155deg, rgba(22,31,66,.9), rgba(7,16,36,.96)); transition: transform .23s, border-color .23s; }
-    .audience-card:hover { transform: translateY(-5px); border-color: var(--line-strong); }
-    .audience-card::after { content: attr(data-ar); position: absolute; right: 8px; bottom: -25px; color: rgba(197,154,238,.06); font: 700 76px "IBM Plex Sans Arabic", sans-serif; }
-    .audience-icon { position: relative; z-index: 1; display: grid; place-items: center; width: 48px; height: 48px; color: #e1c5fb; border: 1px solid rgba(197,154,238,.25); border-radius: 15px; background: rgba(162,100,223,.14); font-size: 22px; }
-    .audience-card h3 { position: relative; z-index: 1; margin: 21px 0 0; font-size: 15px; line-height: 1.25; }
-    .audience-card p { position: relative; z-index: 1; margin: 9px 0 0; color: var(--muted); font-size: 10px; }
+    .audience-card { position: relative; isolation: isolate; min-height: 275px; display: flex; flex-direction: column; justify-content: flex-end; padding: 24px 20px; overflow: hidden; border: 1px solid rgba(181,175,232,.28); border-radius: 23px; background-color: #07182a; background-image: linear-gradient(180deg, rgba(4,12,26,.02) 0%, rgba(4,12,26,.1) 37%, rgba(4,12,26,.88) 76%, rgba(4,12,26,.99) 100%), var(--card-bg); background-position: center, var(--card-pos, center); background-size: cover, cover; background-repeat: no-repeat; box-shadow: 0 18px 42px rgba(0,0,0,.24); transition: transform .23s, border-color .23s, box-shadow .23s; }
+    .audience-card:hover { transform: translateY(-5px); border-color: rgba(197,154,238,.58); box-shadow: 0 23px 52px rgba(0,0,0,.34); }
+    .audience-card::before { content: ""; position: absolute; z-index: 0; inset: 0; pointer-events: none; border-radius: inherit; box-shadow: inset 0 1px rgba(255,255,255,.12); }
+    .audience-card::after { display: none; }
+    .audience-icon { position: relative; z-index: 1; display: grid; place-items: center; width: 44px; height: 44px; color: #f0ddff; border: 1px solid rgba(223,192,248,.42); border-radius: 14px; background: rgba(63,38,107,.56); box-shadow: 0 8px 20px rgba(0,0,0,.24); backdrop-filter: blur(8px); font-size: 20px; }
+    .audience-card h3 { position: relative; z-index: 1; margin: 13px 0 0; font-size: 15px; line-height: 1.25; text-shadow: 0 3px 16px rgba(0,0,0,.95); }
+    .audience-card p { position: relative; z-index: 1; margin: 8px 0 0; color: #dbe1eb; font-size: 10px; text-shadow: 0 2px 12px rgba(0,0,0,.95); }
 
     .guides-layout { display: grid; grid-template-columns: 1fr .9fr; align-items: center; gap: 70px; }
     .guides-copy h2 { margin: 14px 0 0; font-size: clamp(34px, 4vw, 50px); line-height: 1.08; letter-spacing: -.045em; }
@@ -540,7 +542,7 @@
       .pdf-badge { right: -5px; top: 2%; }
       .pdf-copy > p, .pdf-note { font-size: 13px; line-height: 1.6; }
       .module-grid { width: calc(100% + 16px); display: flex; gap: 11px; overflow-x: auto; margin-right: -16px; padding: 4px 16px 16px 0; scroll-snap-type: x mandatory; scrollbar-width: none; }
-      .module-card { flex: 0 0 min(82vw, 320px); min-height: 176px; scroll-snap-align: start; }
+      .module-card { flex: 0 0 min(82vw, 320px); min-height: 250px; scroll-snap-align: start; }
       .module-card p { font-size: 13px; line-height: 1.5; }
       .module-meta { font-size: 11px; }
       .guides-visual { min-height: 370px; }
@@ -549,7 +551,7 @@
       .guide-label { display: none; }
       .guide-points { grid-template-columns: 1fr; }
       .audience-grid { width: calc(100% + 16px); display: flex; gap: 11px; overflow-x: auto; margin-right: -16px; padding: 4px 16px 16px 0; scroll-snap-type: x mandatory; scrollbar-width: none; }
-      .audience-card { flex: 0 0 min(82vw, 310px); min-height: 170px; padding: 20px; scroll-snap-align: start; }
+      .audience-card { flex: 0 0 min(82vw, 310px); min-height: 285px; padding: 20px; scroll-snap-align: start; }
       .audience-card h3 { margin-top: 16px; font-size: 17px; }
       .audience-card p { font-size: 13px; line-height: 1.5; }
       .motivation-panel { padding: 28px 20px; }
@@ -753,14 +755,14 @@
           <p>Уровень A1 разбит на понятные тематические блоки. Необязательный модуль алфавита всегда открыт, а основной путь постепенно добавляет лексику, грамматику и реальные ситуации.</p>
         </div>
         <div class="module-grid">
-          <article class="module-card optional reveal" data-ar="أبجد"><span class="module-number">Модуль 0 · всегда открыт</span><h3>Арабский алфавит</h3><p>Буквы, формы, звуки и первые шаги к чтению.</p><span class="module-meta">Необязательный старт</span></article>
-          <article class="module-card reveal" data-ar="بداية"><span class="module-number">Модуль 1</span><h3>Начало</h3><p>Приветствия, имя, страна, язык и знакомство.</p><span class="module-meta">Основа общения</span></article>
-          <article class="module-card reveal" data-ar="عالم"><span class="module-number">Модуль 2</span><h3>Мир вокруг меня</h3><p>Дом, семья, места, предметы и описание пространства.</p><span class="module-meta">Слова вокруг вас</span></article>
-          <article class="module-card reveal" data-ar="طريق"><span class="module-number">Модуль 3</span><h3>В пути</h3><p>Направления, транспорт и простые вопросы в дороге.</p><span class="module-meta">Практические ситуации</span></article>
-          <article class="module-card reveal is-collapsed" data-ar="يومي"><span class="module-number">Модуль 4</span><h3>Повседневная жизнь</h3><p>Распорядок, время, еда и привычные действия.</p><span class="module-meta">Каждый день</span></article>
-          <article class="module-card reveal is-collapsed" data-ar="دراسة"><span class="module-number">Модуль 5</span><h3>Учёба и работа</h3><p>Профессии, занятия, планы и общение в группе.</p><span class="module-meta">Учимся говорить о себе</span></article>
-          <article class="module-card reveal is-collapsed" data-ar="سفر"><span class="module-number">Модуль 6</span><h3>Путешествия и ситуации</h3><p>Покупки, кафе, гостиница и полезные диалоги.</p><span class="module-meta">Арабский в действии</span></article>
-          <article class="module-card reveal is-collapsed" data-ar="A1"><span class="module-number">Финал уровня</span><h3>Итоговая проверка</h3><p>Собираем навыки вместе и видим, что уже получается.</p><span class="module-meta">Ваш результат A1</span></article>
+          <article class="module-card optional reveal" data-ar="أبجد" style="--card-bg:url('img/card-scenes/learning-city.jpg');--card-pos:72% 20%;"><span class="module-number">Модуль 0 · всегда открыт</span><h3>Арабский алфавит</h3><p>Буквы, формы, звуки и первые шаги к чтению.</p><span class="module-meta">Необязательный старт</span></article>
+          <article class="module-card reveal" data-ar="بداية" style="--card-bg:url('img/card-scenes/first-door.jpg');--card-pos:70% 31%;"><span class="module-number">Модуль 1</span><h3>Начало</h3><p>Приветствия, имя, страна, язык и знакомство.</p><span class="module-meta">Основа общения</span></article>
+          <article class="module-card reveal" data-ar="عالم" style="--card-bg:url('img/card-scenes/arabic-home.jpg');--card-pos:72% 42%;"><span class="module-number">Модуль 2</span><h3>Мир вокруг меня</h3><p>Дом, семья, места, предметы и описание пространства.</p><span class="module-meta">Слова вокруг вас</span></article>
+          <article class="module-card reveal" data-ar="طريق" style="--card-bg:url('img/card-scenes/learning-path.jpg');--card-pos:58% 22%;"><span class="module-number">Модуль 3</span><h3>В пути</h3><p>Направления, транспорт и простые вопросы в дороге.</p><span class="module-meta">Практические ситуации</span></article>
+          <article class="module-card reveal is-collapsed" data-ar="يومي" style="--card-bg:url('img/card-scenes/lisan-flowers.jpg');--card-pos:62% 52%;"><span class="module-number">Модуль 4</span><h3>Повседневная жизнь</h3><p>Распорядок, время, еда и привычные действия.</p><span class="module-meta">Каждый день</span></article>
+          <article class="module-card reveal is-collapsed" data-ar="دراسة" style="--card-bg:url('img/card-scenes/learning-city.jpg');--card-pos:80% 81%;"><span class="module-number">Модуль 5</span><h3>Учёба и работа</h3><p>Профессии, занятия, планы и общение в группе.</p><span class="module-meta">Учимся говорить о себе</span></article>
+          <article class="module-card reveal is-collapsed" data-ar="سفر" style="--card-bg:url('img/card-scenes/desert-journey.jpg');--card-pos:50% 48%;"><span class="module-number">Модуль 6</span><h3>Путешествия и ситуации</h3><p>Покупки, кафе, гостиница и полезные диалоги.</p><span class="module-meta">Арабский в действии</span></article>
+          <article class="module-card reveal is-collapsed" data-ar="A1" style="--card-bg:url('img/card-scenes/night-valley.jpg');--card-pos:50% 57%;"><span class="module-number">Финал уровня</span><h3>Итоговая проверка</h3><p>Собираем навыки вместе и видим, что уже получается.</p><span class="module-meta">Ваш результат A1</span></article>
         </div>
         <p class="swipe-hint">Листайте модули в сторону</p>
         <div class="program-actions reveal"><button class="button button-ghost" id="programToggle" type="button" aria-expanded="false">Показать всю программу</button></div>
@@ -771,11 +773,11 @@
       <div class="wrap">
         <div class="section-head center reveal"><span class="kicker">Найдите себя</span><h2>Для кого создан Lisan?</h2><p>Один понятный маршрут подходит разным целям — меняется контекст практики, но не качество объяснения.</p></div>
         <div class="audience-grid">
-          <article class="audience-card reveal" data-ar="بداية"><span class="audience-icon">0</span><h3>Начинающим с нуля</h3><p>Можно начать с алфавита или сразу с простых фраз и вернуться к буквам позже.</p></article>
-          <article class="audience-card reveal" data-ar="سفر"><span class="audience-icon">⌁</span><h3>Для путешествий</h3><p>Направления, кафе, гостиница, покупки и полезные бытовые диалоги.</p></article>
-          <article class="audience-card reveal" data-ar="دراسة"><span class="audience-icon">▣</span><h3>Для учёбы и работы</h3><p>Лексика о занятиях, профессиях, планах и общении в группе.</p></article>
-          <article class="audience-card reveal" data-ar="حياة"><span class="audience-icon">⌂</span><h3>Живущим в арабской среде</h3><p>Повседневные ситуации помогают быстрее понимать речь вокруг себя.</p></article>
-          <article class="audience-card reveal" data-ar="ثقافة"><span class="audience-icon">✦</span><h3>Интересующимся культурой</h3><p>Язык изучается через реальные сцены и уважительный культурный контекст.</p></article>
+          <article class="audience-card reveal" data-ar="بداية" style="--card-bg:url('img/card-scenes/first-door.jpg');--card-pos:70% 27%;"><span class="audience-icon">0</span><h3>Начинающим с нуля</h3><p>Можно начать с алфавита или сразу с простых фраз и вернуться к буквам позже.</p></article>
+          <article class="audience-card reveal" data-ar="سفر" style="--card-bg:url('img/card-scenes/learning-path.jpg');--card-pos:58% 49%;"><span class="audience-icon">⌁</span><h3>Для путешествий</h3><p>Направления, кафе, гостиница, покупки и полезные бытовые диалоги.</p></article>
+          <article class="audience-card reveal" data-ar="دراسة" style="--card-bg:url('img/card-scenes/learning-city.jpg');--card-pos:78% 82%;"><span class="audience-icon">▣</span><h3>Для учёбы и работы</h3><p>Лексика о занятиях, профессиях, планах и общении в группе.</p></article>
+          <article class="audience-card reveal" data-ar="حياة" style="--card-bg:url('img/card-scenes/arabic-home.jpg');--card-pos:72% 44%;"><span class="audience-icon">⌂</span><h3>Живущим в арабской среде</h3><p>Повседневные ситуации помогают быстрее понимать речь вокруг себя.</p></article>
+          <article class="audience-card reveal" data-ar="ثقافة" style="--card-bg:url('img/card-scenes/lisan-flowers.jpg');--card-pos:64% 50%;"><span class="audience-icon">✦</span><h3>Интересующимся культурой</h3><p>Язык изучается через реальные сцены и уважительный культурный контекст.</p></article>
         </div>
         <p class="swipe-hint">Листайте карточки в сторону</p>
       </div>
